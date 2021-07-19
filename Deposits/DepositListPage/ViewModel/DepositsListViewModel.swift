@@ -31,24 +31,20 @@ final class DepositsListViewModel  : ObservableObject {
     }
     
     private  var bag = Set<AnyCancellable>()
-    
     private var total : Double = 0
     
     @Published var viewState : DepositViewState?
-    
     @Published var deposits : [DepositViewModel] = []
     
-    let depositService : DepositsServiceProtocol
-    
-    init(service : DepositsServiceProtocol = DepositService()) {
+    let depositService : DepositsListServiceProtocol
+    init(service : DepositsListServiceProtocol = DepositListsService()) {
         self.depositService = service
-        
     }
     
     func fetchDeposits() {
-        viewState = .loading
         
-        depositService.fetchDeposits()
+        viewState = .loading
+        depositService.fetchDeposits(page: "100")
             .receive(on: RunLoop.main)
             .sink { [weak self ] response in
                 switch response {
@@ -71,7 +67,7 @@ final class DepositsListViewModel  : ObservableObject {
         deposits.append(DepositViewModel(deposit: deposit))
         deposits = deposits.sorted(by: {$0.addedDate > $1.addedDate})
         total += deposit.amount
-
+        
     }
     
 }
@@ -85,7 +81,7 @@ extension DepositsListViewModel {
     }
     
     var totalDeposits : String {
-        return "$\(total.description)"
+        return "$" + String(format: "%.2f", total)
     }
     
     var numberOfSections : Int {

@@ -14,14 +14,19 @@ protocol ScanChequeResponseDelegate : AnyObject {
 
 class ScanChequeViewController: UIViewController {
     
+    @IBOutlet weak var loadingBar: UIStackView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     @IBOutlet weak var amount: UITextField!
-    @IBOutlet weak var scanImageView: UIImageView!
+    @IBOutlet weak var chequeBackImage: ChequImageView!
+    @IBOutlet weak var chequeFrontImage: ChequImageView!
     @IBOutlet weak var chequeDescription : UITextField!
     @IBOutlet weak var date: UIDatePicker!
     
     weak var delegate : ScanChequeResponseDelegate?
-  
     var viewModel : ScanChequeViewModel = ScanChequeViewModel()
+    
+    var stateCancellable : AnyCancellable?
     
     class func build() -> ScanChequeViewController {
         return ScanChequeViewController(nibName: "ScanChequeViewController", bundle: Bundle(for: ScanChequeViewController.self))
@@ -31,42 +36,41 @@ class ScanChequeViewController: UIViewController {
         super.viewDidLoad()
         buildNabutton()
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(didTapSave)))
+        loadingBar.isHidden = true
+        spinner.hidesWhenStopped = true
+        bind()
+        
+        chequeBackImage.chequeSide = .back
+        chequeFrontImage.chequeSide = .front
     }
+    
+    private func bind() {
+        stateCancellable = viewModel.state
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] state in
+                switch state {
+                case .depositing :
+                    self?.loadingBar.isHidden = false
+                    self?.spinner.startAnimating()
+                case .deposited(let model) :
+                    self?.spinner.stopAnimating()
+                    self?.loadingBar.isHidden = true
+                    self?.delegate?.didDepositCheque(deposit: model)
+                    self?.showAlert(title: "Deposited")
+                case .failed(let error ):
+                    self?.loadingBar.isHidden = true
+                    self?.spinner.stopAnimating()
+                    self?.showAlert(title: error,hasFailedToDeposit: true)
+                default :
+                    break
+                }
+            })
+    }
+    
     
     @objc private func didTapOnView() {
         self.view.endEditing(true)
     }
-    
-    
-    @IBAction func didTapScan(_ sender: UIButton) {
-
-        DispatchQueue.main.async {
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-            picker.delegate = self
-            picker.allowsEditing = false
-            self.present(picker, animated: true)
-        }
-    }
-    
-}
-
-extension ScanChequeViewController  :UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            return
-        }
-        scanImageView.image = originalImage
-        //for image rotation
-        viewModel.chequeImage = originalImage
-    }
-    
     
     private func buildNabutton() {
         let barbutton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
@@ -77,12 +81,7 @@ extension ScanChequeViewController  :UIImagePickerControllerDelegate,UINavigatio
         viewModel.amount = amount.text!
         viewModel.chequeDescription = chequeDescription.text!
         viewModel.date = date.date
-        if let depositedModel = viewModel.deposit() {
-            delegate?.didDepositCheque(deposit: depositedModel)
-            showAlert(title: "Deposited")
-        }else {
-            showAlert(title: "Failed to deposit", hasFailedToDeposit: true)
-        }
+        viewModel.deposit()
     }
     
     
@@ -95,4 +94,6 @@ extension ScanChequeViewController  :UIImagePickerControllerDelegate,UINavigatio
         }))
         present(alert, animated: true, completion: nil)
     }
+    
 }
+

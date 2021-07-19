@@ -22,11 +22,19 @@
 		872B333C26A4A1CA00BD80B8 /* DepositListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B333A26A4A1CA00BD80B8 /* DepositListViewController.swift */; };
 		872B333D26A4A1CA00BD80B8 /* DepositListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872B333B26A4A1CA00BD80B8 /* DepositListViewController.xib */; };
 		872B334126A4A1E200BD80B8 /* MockDepositList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B333F26A4A1E200BD80B8 /* MockDepositList.swift */; };
-		872B334226A4A1E200BD80B8 /* DepositsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B334026A4A1E200BD80B8 /* DepositsService.swift */; };
+		872B334226A4A1E200BD80B8 /* DepositListsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B334026A4A1E200BD80B8 /* DepositListsService.swift */; };
 		872B334726A4A1F200BD80B8 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B334426A4A1F100BD80B8 /* DepositViewModel.swift */; };
 		872B334826A4A1F200BD80B8 /* ScanChequeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B334526A4A1F100BD80B8 /* ScanChequeViewModel.swift */; };
 		872B334926A4A1F200BD80B8 /* DepositsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B334626A4A1F200BD80B8 /* DepositsListViewModel.swift */; };
-		872B335826A4A37B00BD80B8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B335726A4A37B00BD80B8 /* Network.swift */; };
+		872B335A26A4A4A600BD80B8 /* ChequImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B335926A4A4A600BD80B8 /* ChequImageView.swift */; };
+		872B335F26A53B1500BD80B8 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B335E26A53B1500BD80B8 /* NetworkClient.swift */; };
+		872B336126A5468600BD80B8 /* ServiceRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B336026A5468600BD80B8 /* ServiceRequestMethod.swift */; };
+		872B336326A5469600BD80B8 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B336226A5469600BD80B8 /* ServiceRequest.swift */; };
+		872B336526A546DB00BD80B8 /* NetworkClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B336426A546DB00BD80B8 /* NetworkClientError.swift */; };
+		872B336726A546F100BD80B8 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B336626A546F100BD80B8 /* Environment.swift */; };
+		872B336926A5471C00BD80B8 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B336826A5471C00BD80B8 /* URLRequest.swift */; };
+		872B336B26A5472D00BD80B8 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B336A26A5472D00BD80B8 /* URLSessionProtocol.swift */; };
+		872B337926A558F900BD80B8 /* DepositCheuqueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B337826A558F900BD80B8 /* DepositCheuqueService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +66,19 @@
 		872B333A26A4A1CA00BD80B8 /* DepositListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositListViewController.swift; sourceTree = "<group>"; };
 		872B333B26A4A1CA00BD80B8 /* DepositListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositListViewController.xib; sourceTree = "<group>"; };
 		872B333F26A4A1E200BD80B8 /* MockDepositList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDepositList.swift; sourceTree = "<group>"; };
-		872B334026A4A1E200BD80B8 /* DepositsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositsService.swift; sourceTree = "<group>"; };
+		872B334026A4A1E200BD80B8 /* DepositListsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositListsService.swift; sourceTree = "<group>"; };
 		872B334426A4A1F100BD80B8 /* DepositViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
 		872B334526A4A1F100BD80B8 /* ScanChequeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanChequeViewModel.swift; sourceTree = "<group>"; };
 		872B334626A4A1F200BD80B8 /* DepositsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositsListViewModel.swift; sourceTree = "<group>"; };
-		872B335726A4A37B00BD80B8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		872B335926A4A4A600BD80B8 /* ChequImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChequImageView.swift; sourceTree = "<group>"; };
+		872B335E26A53B1500BD80B8 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		872B336026A5468600BD80B8 /* ServiceRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestMethod.swift; sourceTree = "<group>"; };
+		872B336226A5469600BD80B8 /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
+		872B336426A546DB00BD80B8 /* NetworkClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientError.swift; sourceTree = "<group>"; };
+		872B336626A546F100BD80B8 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		872B336826A5471C00BD80B8 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		872B336A26A5472D00BD80B8 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		872B337826A558F900BD80B8 /* DepositCheuqueService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositCheuqueService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +121,14 @@
 		872B325A26A49DD600BD80B8 /* Deposits */ = {
 			isa = PBXGroup;
 			children = (
+				872B335D26A53AFC00BD80B8 /* Networking */,
 				872B334326A4A1E600BD80B8 /* Services */,
 				872B333E26A4A1D000BD80B8 /* DepositListPage */,
 				872B333926A4A1B400BD80B8 /* ScanChequePage */,
 				872B333426A4A19600BD80B8 /* Model */,
 				872B325B26A49DD600BD80B8 /* Deposits.h */,
 				872B325C26A49DD600BD80B8 /* Info.plist */,
-				872B335726A4A37B00BD80B8 /* Network.swift */,
+				872B336626A546F100BD80B8 /* Environment.swift */,
 			);
 			path = Deposits;
 			sourceTree = "<group>";
@@ -156,7 +173,8 @@
 		872B333926A4A1B400BD80B8 /* ScanChequePage */ = {
 			isa = PBXGroup;
 			children = (
-				872B334526A4A1F100BD80B8 /* ScanChequeViewModel.swift */,
+				872B339F26A585FB00BD80B8 /* View */,
+				872B339E26A585F100BD80B8 /* ViewModel */,
 				872B334D26A4A23B00BD80B8 /* Controller */,
 			);
 			path = ScanChequePage;
@@ -175,7 +193,8 @@
 		872B334326A4A1E600BD80B8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				872B334026A4A1E200BD80B8 /* DepositsService.swift */,
+				872B334026A4A1E200BD80B8 /* DepositListsService.swift */,
+				872B337826A558F900BD80B8 /* DepositCheuqueService.swift */,
 				872B333F26A4A1E200BD80B8 /* MockDepositList.swift */,
 			);
 			path = Services;
@@ -215,6 +234,35 @@
 				872B332826A4A15B00BD80B8 /* DepositTotalCell */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		872B335D26A53AFC00BD80B8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				872B335E26A53B1500BD80B8 /* NetworkClient.swift */,
+				872B336A26A5472D00BD80B8 /* URLSessionProtocol.swift */,
+				872B336826A5471C00BD80B8 /* URLRequest.swift */,
+				872B336426A546DB00BD80B8 /* NetworkClientError.swift */,
+				872B336226A5469600BD80B8 /* ServiceRequest.swift */,
+				872B336026A5468600BD80B8 /* ServiceRequestMethod.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		872B339E26A585F100BD80B8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				872B334526A4A1F100BD80B8 /* ScanChequeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		872B339F26A585FB00BD80B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				872B335926A4A4A600BD80B8 /* ChequImageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,16 +378,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				872B335826A4A37B00BD80B8 /* Network.swift in Sources */,
+				872B336B26A5472D00BD80B8 /* URLSessionProtocol.swift in Sources */,
+				872B336326A5469600BD80B8 /* ServiceRequest.swift in Sources */,
+				872B336126A5468600BD80B8 /* ServiceRequestMethod.swift in Sources */,
 				872B333126A4A19000BD80B8 /* DepositError.swift in Sources */,
+				872B336526A546DB00BD80B8 /* NetworkClientError.swift in Sources */,
 				872B332C26A4A17900BD80B8 /* DepositTableViewCell.swift in Sources */,
-				872B334226A4A1E200BD80B8 /* DepositsService.swift in Sources */,
+				872B335F26A53B1500BD80B8 /* NetworkClient.swift in Sources */,
+				872B335A26A4A4A600BD80B8 /* ChequImageView.swift in Sources */,
+				872B334226A4A1E200BD80B8 /* DepositListsService.swift in Sources */,
+				872B337926A558F900BD80B8 /* DepositCheuqueService.swift in Sources */,
 				872B333726A4A1AD00BD80B8 /* ScanChequeViewController.swift in Sources */,
 				872B333226A4A19000BD80B8 /* DepositModuleBuilder.swift in Sources */,
 				872B332726A4A15100BD80B8 /* DepositsTotalCell.swift in Sources */,
+				872B336926A5471C00BD80B8 /* URLRequest.swift in Sources */,
 				872B333C26A4A1CA00BD80B8 /* DepositListViewController.swift in Sources */,
 				872B334126A4A1E200BD80B8 /* MockDepositList.swift in Sources */,
 				872B333326A4A19000BD80B8 /* DepositModel.swift in Sources */,
+				872B336726A546F100BD80B8 /* Environment.swift in Sources */,
 				872B334926A4A1F200BD80B8 /* DepositsListViewModel.swift in Sources */,
 				872B334826A4A1F200BD80B8 /* ScanChequeViewModel.swift in Sources */,
 				872B334726A4A1F200BD80B8 /* DepositViewModel.swift in Sources */,

@@ -18,26 +18,26 @@ struct DepositViewModel  : Identifiable {
     var date : String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd-MM-yyyy"
+        return dateFormatterGet.string(from: deposit.addedDate)
         
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
-        
-        if let date = dateFormatterGet.date(from: deposit.date) {
-            return dateFormatterPrint.string(from: date)
-        }
-        return "-"
     }
     
     var amount : String {
-        return "$\(deposit.amount)"
+        return "$" + String(format: "%.2f", deposit.amount)
     }
     
     var description : String {
         deposit.description
     }
     
-    var chequePath : URL? {
-        if let path = deposit.chequeImagePath {
+    var chequeFrontImage : URL? {
+        if let path = deposit.checkFrontImage {
+            return URL(string: path)
+        }
+        return nil
+    }
+    var chequeBackImage : URL? {
+        if let path = deposit.checkBackImage {
             return URL(string: path)
         }
         return nil

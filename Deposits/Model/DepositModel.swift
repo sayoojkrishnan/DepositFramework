@@ -12,21 +12,27 @@ import Foundation
 struct DepositModel : Decodable  , Hashable {
     
     let id : String
-    let date : String
+    let date : Double
     let amount : Double
     let description : String
-    var chequeImagePath : String?
-    
+    var checkFrontImage : String?
+    var checkBackImage : String?
     
     var addedDate : Date {
-        
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "dd-MM-yyyy"
-        
-        if let date = dateFormatterGet.date(from: date) {
-            return date
+        let dateLength = String(date).count
+        if dateLength >= 13 {
+            return Date(timeIntervalSince1970: date/1000)
         }
+        return Date(timeIntervalSince1970: date)
+    }
     
-        return Date()
+    
+    enum  CodingKeys : String, CodingKey {
+        case id = "objectId"
+        case amount = "depositAmount"
+        case date = "depositDate"
+        case checkFrontImage = "checkFrontImage"
+        case checkBackImage = "checkBackImage"
+        case description = "depositDescription"
     }
 }
