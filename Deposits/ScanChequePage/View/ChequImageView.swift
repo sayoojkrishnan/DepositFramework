@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol ChequImageViewDelegate : AnyObject {
+    func didRequestToOpenCamera(for chequeSide: ChequImageView.ChequeSide)
+}
 class ChequImageView : UIView {
     
     enum ChequeSide   {
@@ -43,7 +46,8 @@ class ChequImageView : UIView {
             chequeImageView.image = image
         }
     }
-    
+     
+    weak var delegate : ChequImageViewDelegate?
     
     let chequeImageView : UIImageView = {
         let chequeImageView =  UIImageView()
@@ -65,8 +69,8 @@ class ChequImageView : UIView {
     
     
     @objc private func didTapToView(tap : UITapGestureRecognizer) {
-        
-        // Show 
+        guard let side = chequeSide else {return}
+        delegate?.didRequestToOpenCamera(for: side)
     }
     
     

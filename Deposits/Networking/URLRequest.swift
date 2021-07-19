@@ -10,8 +10,7 @@ import Foundation
 extension URLRequest {
     init(serviceRequest : ServiceRequest) {
         self.init(url: serviceRequest.endPoint)
-        
-        print(serviceRequest.endPoint.absoluteString)
+    
         httpMethod = serviceRequest.method.rawValue
         httpBody = serviceRequest.body
         setValue("application/json", forHTTPHeaderField: "Content-Type")

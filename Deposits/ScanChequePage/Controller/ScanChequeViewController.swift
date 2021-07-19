@@ -41,7 +41,10 @@ class ScanChequeViewController: UIViewController {
         bind()
         
         chequeBackImage.chequeSide = .back
+        chequeBackImage.delegate = self
+        
         chequeFrontImage.chequeSide = .front
+        chequeFrontImage.delegate = self
     }
     
     private func bind() {
@@ -97,3 +100,14 @@ class ScanChequeViewController: UIViewController {
     
 }
 
+
+extension ScanChequeViewController : ChequImageViewDelegate {
+    
+    func didRequestToOpenCamera(for chequeSide: ChequImageView.ChequeSide) {
+        let scanner = ChequeScannerVC()
+        scanner.side = chequeSide
+        scanner.modalPresentationStyle = .fullScreen
+        self.present(scanner, animated: true, completion: nil)
+    }
+    
+}
