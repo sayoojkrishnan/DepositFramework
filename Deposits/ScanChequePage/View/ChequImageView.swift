@@ -8,23 +8,11 @@
 import UIKit
 
 protocol ChequImageViewDelegate : AnyObject {
-    func didRequestToOpenCamera(for chequeSide: ChequImageView.ChequeSide)
+    func didRequestToOpenCamera(for chequeSide: ChequeSide)
 }
+
 class ChequImageView : UIView {
     
-    enum ChequeSide   {
-        case front
-        case back
-        
-        var description :String {
-            switch  self {
-            case .front:
-                return "Front of cheque"
-            case .back :
-                return "Back of cheque"
-            }
-        }
-    }
     
     var chequeSide : ChequeSide? {
         didSet {
@@ -39,14 +27,10 @@ class ChequImageView : UIView {
     
     var chequeImage : UIImage? {
         didSet {
-            guard let image = chequeImage else {
-                chequeImageView.image = dummyImage
-                return
-            }
-            chequeImageView.image = image
+            updateImage()
         }
     }
-     
+    
     weak var delegate : ChequImageViewDelegate?
     
     let chequeImageView : UIImageView = {
@@ -73,9 +57,21 @@ class ChequImageView : UIView {
         delegate?.didRequestToOpenCamera(for: side)
     }
     
+    private func updateImage() {
+        DispatchQueue.main.async {
+            if let image = self.chequeImage {
+                self.chequeImageView.contentMode = .scaleAspectFill
+                self.chequeImageView.image = image
+            }else {
+                self.chequeImageView.contentMode = .scaleAspectFit
+                self.chequeImageView.image = self.dummyImage
+            }
+        }
+    }
     
-    override func didMoveToWindow() {
-        super.didMoveToWindow()
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
         
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
@@ -91,15 +87,16 @@ class ChequImageView : UIView {
             chequeImageView.topAnchor.constraint(equalTo: topAnchor),
             chequeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             chequeImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            chequeImageView.bottomAnchor.constraint(equalTo: chequePostionLabel.topAnchor),
+            chequeImageView.bottomAnchor.constraint(equalTo: chequePostionLabel.topAnchor ,constant: -10),
             
             chequePostionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             chequePostionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            chequePostionLabel.bottomAnchor.constraint(equalTo: bottomAnchor , constant: -10),
+            chequePostionLabel.bottomAnchor.constraint(equalTo: bottomAnchor , constant: -5),
             chequePostionLabel.heightAnchor.constraint(equalToConstant: 20)
             
         ])
-
+        
     }
+    
     
 }

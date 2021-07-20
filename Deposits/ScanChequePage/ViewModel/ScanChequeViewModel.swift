@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit.UIImage
 
 class ScanChequeViewModel  {
     
@@ -22,8 +23,8 @@ class ScanChequeViewModel  {
     var date : Date = Date()
     var amount : String = ""
     
-    var chequeFrontImageData : Data?
-    var chequeBackImageData : Date?
+    var chequeFrontImage : UIImage?
+    var chequeBackImage : UIImage?
     
     let service : DepositChequeServiceProtocol
     init(service : DepositChequeServiceProtocol = DepositChequeService()) {

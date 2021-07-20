@@ -34,6 +34,7 @@ class ScanChequeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "New deposit"
         buildNabutton()
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(didTapSave)))
         loadingBar.isHidden = true
@@ -70,23 +71,23 @@ class ScanChequeViewController: UIViewController {
             })
     }
     
-    
-    @objc private func didTapOnView() {
-        self.view.endEditing(true)
-    }
-    
     private func buildNabutton() {
         let barbutton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
         navigationItem.rightBarButtonItem = barbutton
     }
     
     @objc private func didTapSave() {
+        self.view.endEditing(true)
         viewModel.amount = amount.text!
         viewModel.chequeDescription = chequeDescription.text!
         viewModel.date = date.date
         viewModel.deposit()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
     
     func showAlert(title : String , hasFailedToDeposit : Bool = false ) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
@@ -103,11 +104,28 @@ class ScanChequeViewController: UIViewController {
 
 extension ScanChequeViewController : ChequImageViewDelegate {
     
-    func didRequestToOpenCamera(for chequeSide: ChequImageView.ChequeSide) {
-        let scanner = ChequeScannerVC()
+    func didRequestToOpenCamera(for chequeSide: ChequeSide) {
+        let scanner = SBChequeScannerVC()
         scanner.side = chequeSide
+        scanner.delegate = self
         scanner.modalPresentationStyle = .fullScreen
         self.present(scanner, animated: true, completion: nil)
+    }
+    
+}
+
+extension ScanChequeViewController : ChequeScannerDelegate {
+    
+    func didFinishScanning(withCheque image: UIImage, side: ChequeSide) {
+
+        if side == .back {
+            self.viewModel.chequeBackImage  = image
+        }else {
+            self.viewModel.chequeFrontImage = image
+        }
+        
+        self.chequeFrontImage.chequeImage = self.viewModel.chequeFrontImage
+        self.chequeBackImage.chequeImage =  self.viewModel.chequeBackImage
     }
     
 }

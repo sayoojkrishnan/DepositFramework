@@ -11,9 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanChequeViewController" customModule="Deposits" customModuleProvider="target">
             <connections>
                 <outlet property="amount" destination="kSt-oX-89r" id="qy1-BU-us8"/>
-                <outlet property="chequeBackImage" destination="UOK-Cb-Vqu" id="3AQ-sH-3fY"/>
+                <outlet property="chequeBackImage" destination="Fxm-vD-sFy" id="LCc-4e-jHG"/>
                 <outlet property="chequeDescription" destination="VOG-Hd-1Tn" id="7xY-af-shz"/>
-                <outlet property="chequeFrontImage" destination="K3p-oK-v5L" id="ioG-iD-G7X"/>
+                <outlet property="chequeFrontImage" destination="2gO-ea-Icv" id="jYW-R5-AXo"/>
                 <outlet property="date" destination="9EK-Uv-7CZ" id="JqK-Db-70Y"/>
                 <outlet property="loadingBar" destination="VIE-pZ-J57" id="b5m-4X-rEx"/>
                 <outlet property="spinner" destination="vrN-XV-N1u" id="hjA-Co-41z"/>
@@ -63,28 +63,28 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cG9-Qw-MW6">
-                    <rect key="frame" x="52" y="312" width="310" height="120"/>
+                    <rect key="frame" x="32" y="312" width="350" height="130"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3p-oK-v5L" customClass="ChequImageView" customModule="Deposits" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="140" height="120"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gO-ea-Icv" customClass="ChequImageView" customModule="Deposits" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="130"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="140" id="Le0-wA-qWU"/>
-                                <constraint firstAttribute="height" constant="120" id="Og4-Vj-Wke"/>
+                                <constraint firstAttribute="width" constant="160" id="SVI-D1-y2C"/>
+                                <constraint firstAttribute="height" constant="130" id="cRa-VX-4BD"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOK-Cb-Vqu" customClass="ChequImageView" customModule="Deposits" customModuleProvider="target">
-                            <rect key="frame" x="170" y="0.0" width="140" height="120"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxm-vD-sFy" customClass="ChequImageView" customModule="Deposits" customModuleProvider="target">
+                            <rect key="frame" x="190" y="0.0" width="160" height="130"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="140" id="EMC-cg-UEi"/>
-                                <constraint firstAttribute="height" constant="120" id="LWs-mF-7xJ"/>
+                                <constraint firstAttribute="height" constant="130" id="Vtp-x9-PRI"/>
+                                <constraint firstAttribute="width" constant="160" id="iry-oZ-yKo"/>
                             </constraints>
                         </view>
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="VIE-pZ-J57">
-                    <rect key="frame" x="132" y="462" width="150.5" height="25"/>
+                    <rect key="frame" x="132" y="472" width="150.5" height="25"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Depositing.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqM-ho-bQ5">
                             <rect key="frame" x="0.0" y="0.0" width="63.5" height="25"/>
