@@ -119,6 +119,7 @@ extension DepositListViewController : UITableViewDataSource , UITableViewDelegat
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DepositsTotalCell", for: indexPath) as! DepositsTotalCell
             cell.totalDeposits.text = viewModel.totalDeposits
+            cell.numberOfTransactions.text = viewModel.numberOfTransaction
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DepositTableViewCell", for: indexPath) as! DepositTableViewCell

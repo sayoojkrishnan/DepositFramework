@@ -4,35 +4,51 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepositsTotalCell" id="KGk-i7-Jjw" customClass="DepositsTotalCell" customModule="Deposits" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepositsTotalCell" rowHeight="58" id="KGk-i7-Jjw" customClass="DepositsTotalCell" customModule="Deposits" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="58"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="330" height="58"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOr-yn-cgx">
-                        <rect key="frame" x="130.5" y="8" width="59" height="28"/>
+                        <rect key="frame" x="135.5" y="5" width="59" height="28"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgl-g8-80a">
+                        <rect key="frame" x="150.5" y="38" width="29" height="13.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aOr-yn-cgx" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9lj-Se-u11"/>
-                    <constraint firstItem="aOr-yn-cgx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lkB-CZ-G85"/>
+                    <constraint firstItem="xgl-g8-80a" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cLI-0G-muO"/>
+                    <constraint firstItem="aOr-yn-cgx" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dvI-Ro-DAM"/>
+                    <constraint firstItem="aOr-yn-cgx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ltK-gM-0mu"/>
+                    <constraint firstAttribute="bottom" secondItem="xgl-g8-80a" secondAttribute="bottom" constant="6.5" id="sQ6-nP-M9f"/>
+                    <constraint firstItem="xgl-g8-80a" firstAttribute="top" secondItem="aOr-yn-cgx" secondAttribute="bottom" constant="5" id="teB-GB-74x"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="numberOfTransactions" destination="xgl-g8-80a" id="guI-69-QOr"/>
                 <outlet property="totalDeposits" destination="aOr-yn-cgx" id="bBv-Ks-tCT"/>
             </connections>
-            <point key="canvasLocation" x="112" y="109"/>
+            <point key="canvasLocation" x="130.43478260869566" y="93.75"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

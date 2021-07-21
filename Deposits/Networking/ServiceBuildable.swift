@@ -1,0 +1,70 @@
+//
+//  ServiceBuildable.swift
+//  Deposits
+//
+//  Created by Sayooj Krishnan  on 21/07/21.
+//
+
+import Foundation
+
+enum MockType {
+    case localJSON(String)
+    case mockData(Data)
+}
+
+protocol MockNeworkServiceBuildable {
+    var mockType : MockType? {get}
+    var client : NetworkClient {get}
+}
+
+extension MockNeworkServiceBuildable {
+    
+    var client : NetworkClient {
+        if DepositsEnv.instance.shouldMock {
+            print("Env set to MOCK, will check for local json or mock response data")
+            ///Env set to MOCK, will check for local json or mock response data
+            if let mockType = mockType {
+                switch mockType {
+                case .localJSON(let json):
+                    return buildClient(with: json)
+                case .mockData(let data) :
+                    return buildClient(with: data)
+                }
+            }
+            fatalError("Mock env detected. Should specifiy either 'localJSONFile' or 'responseData' ")
+        }
+        
+        return NetworkClient()
+        
+    }
+    
+    
+    func buildClient(with responseData : Data) ->NetworkClient {
+        let session = MockURLSession()
+        session.nextData = responseData
+        return NetworkClient(session: session)
+    }
+    
+    
+    func buildClient(with localJSONFile : String) -> NetworkClient{
+        
+        guard let bundle = Bundle(identifier: "info.sayoojkrishnan.Deposits") else {
+            fatalError("Bundle not found!")
+        }
+        
+        guard let path = bundle.url(forResource: localJSONFile, withExtension: "json") else {
+            fatalError("Could not read the \(localJSONFile)")
+        }
+        
+        let jsonString = try? String(contentsOf: path)
+        
+        guard let jsonData = jsonString?.data(using: .utf8) else {
+            fatalError("Could not prepare date from \(path) file")
+        }
+        
+        let session = MockURLSession()
+        session.nextData = jsonData
+        return NetworkClient(session: session)
+        
+    }
+}

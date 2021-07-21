@@ -9,7 +9,9 @@ import Foundation
 
 
 
-enum Env {
+public enum Env {
+    
+    case mock
     case prod
     case qa
     case staging
@@ -22,10 +24,39 @@ enum Env {
             return "stirredverse.backendless.app"
         case .staging:
             return "stirredverse.backendless.app"
+        case .mock :
+            return ""
         }
     }
+    
 }
 
-struct DepositsEnv {
-    static let env : Env = .prod
+class DepositsEnv {
+    
+    private static var _instance : DepositsEnv?
+    
+    static var instance : DepositsEnv {
+        guard let ins = _instance else {
+            fatalError("Call the build method on DepositsEnv with proper env to initialize")
+        }
+        return ins
+    }
+    
+    static func build(withEnv env : Env) -> DepositsEnv {
+        if _instance == nil {
+            _instance = DepositsEnv(env: env)
+        }
+        return _instance!
+    }
+    
+    let env : Env
+    private init(env : Env) {
+        self.env = env
+    }
+    
+    var shouldMock : Bool {
+        return env == .mock
+    }
+    
+    
 }

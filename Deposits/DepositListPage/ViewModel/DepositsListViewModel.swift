@@ -84,6 +84,10 @@ extension DepositsListViewModel {
         return "$" + String(format: "%.2f", total)
     }
     
+    var numberOfTransaction : String {
+        return "from \(deposits.count) transaction" + "\(deposits.count > 1 ? "s":"")"
+    }
+    
     var numberOfSections : Int {
         return 2
     }

@@ -9,16 +9,25 @@ import UIKit.UIImage
 import Foundation
 
 
-struct DepositModel : Decodable  , Hashable {
+struct DepositModel : Codable  , Hashable {
     
     let id : String
-    let date : Double
-    let amount : Double
-    let description : String
+    let date : Double?
+    let chequeAmount : Double?
+    let description : String?
     var checkFrontImage : String?
     var checkBackImage : String?
     
+    
+    var amount : Double {
+        return chequeAmount ?? 0.0
+    }
+    
     var addedDate : Date {
+        guard let date = date else {
+            return Date()
+        }
+        
         let dateLength = String(date).count
         if dateLength >= 13 {
             return Date(timeIntervalSince1970: date/1000)
@@ -29,7 +38,7 @@ struct DepositModel : Decodable  , Hashable {
     
     enum  CodingKeys : String, CodingKey {
         case id = "objectId"
-        case amount = "depositAmount"
+        case chequeAmount = "depositAmount"
         case date = "depositDate"
         case checkFrontImage = "checkFrontImage"
         case checkBackImage = "checkBackImage"

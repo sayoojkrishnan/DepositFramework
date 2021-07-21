@@ -17,7 +17,7 @@ protocol ServiceRequest  {
 
 extension ServiceRequest {
     var endPoint : URL {
-        let host = DepositsEnv.env.url
+        let host = DepositsEnv.instance.env.url
         var components = URLComponents()
         components.queryItems = params.map({ return URLQueryItem(name: $0, value: $1)})
         components.path = path

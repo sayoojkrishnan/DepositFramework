@@ -10,6 +10,7 @@ import UIKit
 class DepositsTotalCell: UITableViewCell {
 
     
+    @IBOutlet weak var numberOfTransactions: UILabel!
     @IBOutlet weak var totalDeposits: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

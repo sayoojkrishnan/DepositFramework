@@ -27,7 +27,7 @@ struct DepositViewModel  : Identifiable {
     }
     
     var description : String {
-        deposit.description
+        deposit.description ?? ""
     }
     
     var chequeFrontImage : URL? {
