@@ -17,6 +17,7 @@ public struct DepositModuleBuilder  {
         let nav =  UINavigationController(rootViewController: deposits)
         nav.navigationBar.prefersLargeTitles = true
         return nav
+        
     }
     
     

@@ -15,7 +15,7 @@ protocol DepositsListServiceProtocol : MockNeworkServiceBuildable  {
 
 final class DepositListsService : DepositsListServiceProtocol {
     
-     var mockType: MockType? = .localJSON("deposits_list")
+    var mockType: MockType? = .localJSON("deposits_list")
     
     func fetchDeposits(page : String = "100") -> AnyPublisher<[DepositModel], DepositError> {
         

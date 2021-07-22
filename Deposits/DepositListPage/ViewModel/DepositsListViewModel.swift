@@ -29,9 +29,19 @@ final class DepositsListViewModel  : ObservableObject {
         }
         
     }
-    
+    private var page : Int = 0
+    private var perPage : Int = 100
     private  var bag = Set<AnyCancellable>()
     private var total : Double = 0
+    
+    
+    var totalDeposits : String {
+        return "$" + String(format: "%.2f", total)
+    }
+    
+    var numberOfTransaction : String {
+        return "from \(deposits.count) transaction" + "\(deposits.count > 1 ? "s":"")"
+    }
     
     @Published var viewState : DepositViewState?
     @Published var deposits : [DepositViewModel] = []
@@ -68,39 +78,6 @@ final class DepositsListViewModel  : ObservableObject {
         deposits = deposits.sorted(by: {$0.addedDate > $1.addedDate})
         total += deposit.amount
         
-    }
-    
-}
-
-
-//MARK: Deposits list data source
-extension DepositsListViewModel {
-    
-    func depositViewModelFor(indexPath : IndexPath ) ->DepositViewModel {
-        deposits[indexPath.row]
-    }
-    
-    var totalDeposits : String {
-        return "$" + String(format: "%.2f", total)
-    }
-    
-    var numberOfTransaction : String {
-        return "from \(deposits.count) transaction" + "\(deposits.count > 1 ? "s":"")"
-    }
-    
-    var numberOfSections : Int {
-        return 2
-    }
-    
-    func sectionHeaderTitle(for section : Int) -> String {
-        return Sections.sectionHeader(for: section)
-    }
-    
-    func numberOfRowsInSection(section : Int) -> Int {
-        if section == 0 {
-            return 1
-        }
-        return deposits.count
     }
     
 }

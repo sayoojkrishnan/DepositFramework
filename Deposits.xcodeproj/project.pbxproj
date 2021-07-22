@@ -44,6 +44,9 @@
 		87B6BF6E26A7E8CA00870B5C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BF6D26A7E8CA00870B5C /* MockURLSession.swift */; };
 		87B6BF7226A7FDA200870B5C /* DepositChequeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BF7126A7FDA200870B5C /* DepositChequeRequest.swift */; };
 		87B6BF7426A7FDB900870B5C /* DepositListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BF7326A7FDB900870B5C /* DepositListRequest.swift */; };
+		87B6BFA026A83C2E00870B5C /* DepositViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */; };
+		87B6BFA226A8453700870B5C /* DepositsListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */; };
+		87B6BFAC26A9846D00870B5C /* DepositListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFAB26A9846D00870B5C /* DepositListTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		87B6BF6D26A7E8CA00870B5C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		87B6BF7126A7FDA200870B5C /* DepositChequeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositChequeRequest.swift; sourceTree = "<group>"; };
 		87B6BF7326A7FDB900870B5C /* DepositListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositListRequest.swift; sourceTree = "<group>"; };
+		87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModelTests.swift; sourceTree = "<group>"; };
+		87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositsListServiceTests.swift; sourceTree = "<group>"; };
+		87B6BFAB26A9846D00870B5C /* DepositListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositListTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				872B326626A49DD600BD80B8 /* DepositsTests.swift */,
+				87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */,
+				87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */,
 				872B326826A49DD600BD80B8 /* Info.plist */,
 			);
 			path = DepositsTests;
@@ -209,6 +217,7 @@
 				872B334C26A4A22200BD80B8 /* ViewModel */,
 				872B334B26A4A21200BD80B8 /* Controllers */,
 				87B6BF7326A7FDB900870B5C /* DepositListRequest.swift */,
+				87B6BFAB26A9846D00870B5C /* DepositListTableViewDataSource.swift */,
 			);
 			path = DepositListPage;
 			sourceTree = "<group>";
@@ -443,6 +452,7 @@
 				87B6BF7226A7FDA200870B5C /* DepositChequeRequest.swift in Sources */,
 				872B33C126A5A0D000BD80B8 /* ChequeScannerVC.swift in Sources */,
 				872B333C26A4A1CA00BD80B8 /* DepositListViewController.swift in Sources */,
+				87B6BFAC26A9846D00870B5C /* DepositListTableViewDataSource.swift in Sources */,
 				872B334126A4A1E200BD80B8 /* MockDepositList.swift in Sources */,
 				872B333326A4A19000BD80B8 /* DepositModel.swift in Sources */,
 				8762478526A6DCDA004CD6AE /* CameraView.swift in Sources */,
@@ -459,6 +469,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				872B326726A49DD600BD80B8 /* DepositsTests.swift in Sources */,
+				87B6BFA226A8453700870B5C /* DepositsListServiceTests.swift in Sources */,
+				87B6BFA026A83C2E00870B5C /* DepositViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

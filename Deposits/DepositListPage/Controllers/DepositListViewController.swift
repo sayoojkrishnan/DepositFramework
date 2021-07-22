@@ -14,6 +14,8 @@ class DepositListViewController: UIViewController {
         return DepositListViewController(nibName: "DepositListViewController", bundle: Bundle(for: DepositListViewController.self))
     }
     
+    private var refreshController : UIRefreshControl!
+    private var dataSource =  DepositListTableViewDataSource()
     @IBOutlet weak var depositsTableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
@@ -23,7 +25,7 @@ class DepositListViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         title = "Deposits"
-        
+        configureRefreshControll()
         configureTableView()
         viewModel.fetchDeposits()
         bind()
@@ -34,9 +36,13 @@ class DepositListViewController: UIViewController {
     
     private func bind() {
         
+        
         viewModel.$deposits
             .receive(on: RunLoop.main)
-            .sink { [weak self]_ in
+            .sink { [weak self] dopsits in
+                let total = self?.viewModel.totalDeposits
+                let transcation = self?.viewModel.numberOfTransaction
+                self?.dataSource.updateData(deposits: dopsits, total: total, transcations: transcation)
                 self?.depositsTableView.reloadData()
             }.store(in: &bag)
         
@@ -48,9 +54,11 @@ class DepositListViewController: UIViewController {
                 case .loading :
                     self?.spinner.startAnimating()
                 case .failed(let error) :
+                    self?.refreshController.endRefreshing()
                     self?.spinner.stopAnimating()
                     self?.showFailureAlert(message: error)
                 case .success :
+                    self?.refreshController.endRefreshing()
                     self?.spinner.stopAnimating()
                     self?.depositsTableView.isHidden = false
                 default :
@@ -81,6 +89,14 @@ class DepositListViewController: UIViewController {
         scan.delegate = self
         navigationController?.pushViewController(scan, animated: true)
     }
+    
+    private func configureRefreshControll() {
+        refreshController = UIRefreshControl(frame: CGRect.zero, primaryAction: UIAction(handler: { action in
+            self.refreshController.beginRefreshing()
+            self.viewModel.fetchDeposits()
+        }))
+        depositsTableView.refreshControl = refreshController
+    }
 }
 
 extension DepositListViewController : ScanChequeResponseDelegate {
@@ -89,12 +105,13 @@ extension DepositListViewController : ScanChequeResponseDelegate {
     }
 }
 
-extension DepositListViewController : UITableViewDataSource , UITableViewDelegate {
+//UITableViewDataSource , UITableViewDelegate
+extension DepositListViewController  {
     
     
     private func configureTableView() {
-        depositsTableView.delegate = self
-        depositsTableView.dataSource = self
+        depositsTableView.delegate = dataSource
+        depositsTableView.dataSource = dataSource
         depositsTableView.isHidden = true
         
         let depositNib = UINib(nibName: "DepositTableViewCell", bundle: Bundle(for: DepositTableViewCell.self))
@@ -103,33 +120,7 @@ extension DepositListViewController : UITableViewDataSource , UITableViewDelegat
         depositsTableView.register(totalNib, forCellReuseIdentifier: "DepositsTotalCell")
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections
-    }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.sectionHeaderTitle(for: section)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRowsInSection(section: section)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DepositsTotalCell", for: indexPath) as! DepositsTotalCell
-            cell.totalDeposits.text = viewModel.totalDeposits
-            cell.numberOfTransactions.text = viewModel.numberOfTransaction
-            return cell
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DepositTableViewCell", for: indexPath) as! DepositTableViewCell
-            cell.depositViewModel = viewModel.depositViewModelFor(indexPath: indexPath)
-            return cell
-        }
-        
-    }
-    
-}
 
+}
 
 
