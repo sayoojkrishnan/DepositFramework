@@ -20,6 +20,7 @@ class DepositsListServiceTests : XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
     }
+    
 
     var depoisitListCancellable : AnyCancellable?
     func testDepositsListServicew_WhenDepositListIsRequestedInMockEnv_ShouldProvideListOfDepositLoadedFromLocal() {
@@ -38,10 +39,12 @@ class DepositsListServiceTests : XCTestCase {
                 }
             }, receiveValue: { dp in
                 deposits = dp
+                loadStatus = true
                 expectation.fulfill()
             })
+       
+        waitForExpectations(timeout: 0.6, handler: nil)
         
-        waitForExpectations(timeout: 0.4, handler: nil)
         XCTAssertTrue(loadStatus)
         XCTAssertEqual(deposits.count, 18)
     }

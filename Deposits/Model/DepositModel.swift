@@ -45,3 +45,9 @@ struct DepositModel : Codable  , Hashable {
         case description = "depositDescription"
     }
 }
+
+
+extension DepositModel {
+    
+    static let dummy = DepositModel(id: "1", date: 1626868205033, chequeAmount: 100, description: "Test", checkFrontImage: nil, checkBackImage: nil)
+}

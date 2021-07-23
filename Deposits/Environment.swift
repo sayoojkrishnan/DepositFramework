@@ -31,8 +31,14 @@ public enum Env {
     
 }
 
-class DepositsEnv {
+protocol EnvBuildable  {
+    var shouldMock : Bool {get}
+    var env : Env {get}
+}
+
+class DepositsEnv : EnvBuildable {
     
+
     private static var _instance : DepositsEnv?
     
     static var instance : DepositsEnv {
@@ -49,9 +55,13 @@ class DepositsEnv {
         return _instance!
     }
     
-    let env : Env
+    var env : Env {
+        return _env
+    }
+    
+    private let _env : Env
     private init(env : Env) {
-        self.env = env
+        self._env = env
     }
     
     var shouldMock : Bool {

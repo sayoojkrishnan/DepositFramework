@@ -47,6 +47,15 @@
 		87B6BFA026A83C2E00870B5C /* DepositViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */; };
 		87B6BFA226A8453700870B5C /* DepositsListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */; };
 		87B6BFAC26A9846D00870B5C /* DepositListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFAB26A9846D00870B5C /* DepositListTableViewDataSource.swift */; };
+		87B6BFB226AAB1B400870B5C /* ServiceRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFB126AAB1B400870B5C /* ServiceRequestTests.swift */; };
+		87B6BFB426AABD7200870B5C /* MockNeworkServiceBuildableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFB326AABD7200870B5C /* MockNeworkServiceBuildableTest.swift */; };
+		87B6BFB826AAC62200870B5C /* MockEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFB726AAC62200870B5C /* MockEnv.swift */; };
+		87B6BFBA26AAD56600870B5C /* DepositChequeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFB926AAD56600870B5C /* DepositChequeServiceTests.swift */; };
+		87B6BFBC26AADBC400870B5C /* ScanChequeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFBB26AADBC400870B5C /* ScanChequeViewModelTest.swift */; };
+		87B6BFBE26AADBE600870B5C /* MockNeworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFBD26AADBE600870B5C /* MockNeworkService.swift */; };
+		87B6BFC026AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFBF26AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift */; };
+		87B6BFC226AAED0700870B5C /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFC126AAED0700870B5C /* NetworkClientTests.swift */; };
+		87B6BFC426AAEEB400870B5C /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFC326AAEEB400870B5C /* MockService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +112,15 @@
 		87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModelTests.swift; sourceTree = "<group>"; };
 		87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositsListServiceTests.swift; sourceTree = "<group>"; };
 		87B6BFAB26A9846D00870B5C /* DepositListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositListTableViewDataSource.swift; sourceTree = "<group>"; };
+		87B6BFB126AAB1B400870B5C /* ServiceRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestTests.swift; sourceTree = "<group>"; };
+		87B6BFB326AABD7200870B5C /* MockNeworkServiceBuildableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNeworkServiceBuildableTest.swift; sourceTree = "<group>"; };
+		87B6BFB726AAC62200870B5C /* MockEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEnv.swift; sourceTree = "<group>"; };
+		87B6BFB926AAD56600870B5C /* DepositChequeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositChequeServiceTests.swift; sourceTree = "<group>"; };
+		87B6BFBB26AADBC400870B5C /* ScanChequeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanChequeViewModelTest.swift; sourceTree = "<group>"; };
+		87B6BFBD26AADBE600870B5C /* MockNeworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNeworkService.swift; sourceTree = "<group>"; };
+		87B6BFBF26AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositListTableViewDataSourceTests.swift; sourceTree = "<group>"; };
+		87B6BFC126AAED0700870B5C /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
+		87B6BFC326AAEEB400870B5C /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +184,16 @@
 				872B326626A49DD600BD80B8 /* DepositsTests.swift */,
 				87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */,
 				87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */,
+				87B6BFB926AAD56600870B5C /* DepositChequeServiceTests.swift */,
+				87B6BFB126AAB1B400870B5C /* ServiceRequestTests.swift */,
+				87B6BFB326AABD7200870B5C /* MockNeworkServiceBuildableTest.swift */,
+				87B6BFBB26AADBC400870B5C /* ScanChequeViewModelTest.swift */,
+				87B6BFBF26AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift */,
+				87B6BFC126AAED0700870B5C /* NetworkClientTests.swift */,
 				872B326826A49DD600BD80B8 /* Info.plist */,
+				87B6BFBD26AADBE600870B5C /* MockNeworkService.swift */,
+				87B6BFC326AAEEB400870B5C /* MockService.swift */,
+				87B6BFB726AAC62200870B5C /* MockEnv.swift */,
 			);
 			path = DepositsTests;
 			sourceTree = "<group>";
@@ -468,9 +495,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B6BFB426AABD7200870B5C /* MockNeworkServiceBuildableTest.swift in Sources */,
+				87B6BFC026AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift in Sources */,
 				872B326726A49DD600BD80B8 /* DepositsTests.swift in Sources */,
+				87B6BFB226AAB1B400870B5C /* ServiceRequestTests.swift in Sources */,
 				87B6BFA226A8453700870B5C /* DepositsListServiceTests.swift in Sources */,
+				87B6BFBC26AADBC400870B5C /* ScanChequeViewModelTest.swift in Sources */,
 				87B6BFA026A83C2E00870B5C /* DepositViewModelTests.swift in Sources */,
+				87B6BFB826AAC62200870B5C /* MockEnv.swift in Sources */,
+				87B6BFBE26AADBE600870B5C /* MockNeworkService.swift in Sources */,
+				87B6BFC226AAED0700870B5C /* NetworkClientTests.swift in Sources */,
+				87B6BFBA26AAD56600870B5C /* DepositChequeServiceTests.swift in Sources */,
+				87B6BFC426AAEEB400870B5C /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

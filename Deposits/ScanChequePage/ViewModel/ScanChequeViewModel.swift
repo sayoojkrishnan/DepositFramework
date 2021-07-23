@@ -12,10 +12,22 @@ import UIKit.UIImage
 class ScanChequeViewModel  {
     
     enum ViewState {
+        
         case depositing
         case deposited(DepositModel)
         case failed(String)
         case initial
+        
+        var hasFailed : Bool {
+            switch self {
+            case .failed(_):
+                return true
+            default:
+                return false
+            }
+        }
+        
+        
     }
     
     private(set) var state =  CurrentValueSubject<ViewState,Never>(.initial)
@@ -45,7 +57,6 @@ class ScanChequeViewModel  {
             "created" : Date().timeIntervalSince1970 * 1000,
             "depositDescription" : chequeDescription
         ]
-        
         
         state.value = .depositing
         depositCancellable =  service.depositCheuqe(param: params)

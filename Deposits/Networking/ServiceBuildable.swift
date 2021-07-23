@@ -13,14 +13,20 @@ enum MockType {
 }
 
 protocol MockNeworkServiceBuildable {
-    var mockType : MockType? {get}
+    var mockType : MockType? {get set}
     var client : NetworkClient {get}
+    var env : EnvBuildable {get}
 }
 
 extension MockNeworkServiceBuildable {
     
+    var env : EnvBuildable {
+        DepositsEnv.instance
+    }
+    
+    
     var client : NetworkClient {
-        if DepositsEnv.instance.shouldMock {
+        if env.shouldMock {
             print("Env set to MOCK, will check for local json or mock response data")
             ///Env set to MOCK, will check for local json or mock response data
             if let mockType = mockType {
@@ -31,7 +37,7 @@ extension MockNeworkServiceBuildable {
                     return buildClient(with: data)
                 }
             }
-            fatalError("Mock env detected. Should specifiy either 'localJSONFile' or 'responseData' ")
+            fatalError("Mock env detected. Should specifiy either 'localJSONFile' or 'responseData'")
         }
         
         return NetworkClient()
@@ -67,4 +73,5 @@ extension MockNeworkServiceBuildable {
         return NetworkClient(session: session)
         
     }
+    
 }

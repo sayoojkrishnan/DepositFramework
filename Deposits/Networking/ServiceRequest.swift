@@ -13,11 +13,17 @@ protocol ServiceRequest  {
     var params : [String:String] {get}
     var method : ServiceRequestMethod {get}
     var body : Data? {get}
+    var host : String {get}
 }
 
 extension ServiceRequest {
+    
+    var host : String {
+        return DepositsEnv.instance.env.url
+    }
+    
     var endPoint : URL {
-        let host = DepositsEnv.instance.env.url
+        let host = host
         var components = URLComponents()
         components.queryItems = params.map({ return URLQueryItem(name: $0, value: $1)})
         components.path = path

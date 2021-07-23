@@ -17,7 +17,7 @@ protocol CameraViewDelegate : AnyObject {
 }
 
 
-final class CameraView: UIView {
+final class CameraView : UIView {
     
     private let heightRatioAgainstWidth: CGFloat = 0.5
     weak var delegate: CameraViewDelegate?
@@ -113,7 +113,9 @@ final class CameraView: UIView {
     private func _setupCamera() {
         
         func errorInSetup() {
-            delegate?.didError(withError: .cameraSetup)
+            DispatchQueue.main.async {
+                self.delegate?.didError(withError: .cameraSetup)
+            }
             session.commitConfiguration()
             return
         }
