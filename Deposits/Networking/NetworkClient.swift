@@ -22,6 +22,7 @@ final class NetworkClient : NetworkLayerProtocol {
     
     func request<T>(type: T.Type, serviceRequest: ServiceRequest) -> AnyPublisher<T, NetworkClientError> where T : Decodable {
         let request = URLRequest(serviceRequest: serviceRequest)
+        print(request.url?.absoluteString ?? "")
         return session.dataTask(for: request)
             .tryMap { (data: Data, response: URLResponse) in
                 guard let httpResponse = response as? HTTPURLResponse else {

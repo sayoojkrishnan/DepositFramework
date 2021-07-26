@@ -24,18 +24,19 @@ class DepositListViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Deposits"
         configureRefreshControll()
         configureTableView()
-        viewModel.fetchDeposits()
-        bind()
         buildNabutton()
-        
+        bind()
+        viewModel.fetchDeposits()
+        spinner.startAnimating()
     }
     
+   
     
     private func bind() {
-        
         
         viewModel.$deposits
             .receive(on: RunLoop.main)
@@ -52,15 +53,14 @@ class DepositListViewController: UIViewController {
             .sink { [weak self] state in
                 switch state {
                 case .loading :
-                    self?.spinner.startAnimating()
+                    self?.refreshController.beginRefreshing()
                 case .failed(let error) :
                     self?.refreshController.endRefreshing()
-                    self?.spinner.stopAnimating()
                     self?.showFailureAlert(message: error)
                 case .success :
-                    self?.refreshController.endRefreshing()
-                    self?.spinner.stopAnimating()
                     self?.depositsTableView.isHidden = false
+                    self?.spinner.stopAnimating()
+                    self?.refreshController.endRefreshing()
                 default :
                     break
                 }
@@ -91,11 +91,23 @@ class DepositListViewController: UIViewController {
     }
     
     private func configureRefreshControll() {
-        refreshController = UIRefreshControl(frame: CGRect.zero, primaryAction: UIAction(handler: { action in
-            self.refreshController.beginRefreshing()
-            self.viewModel.fetchDeposits()
+        refreshController = UIRefreshControl(frame: CGRect.zero, primaryAction: UIAction(handler: { [unowned self ]action in
+            self.paginate()
         }))
         depositsTableView.refreshControl = refreshController
+    }
+    
+    private func paginate() {
+        do {
+            try self.viewModel.paginate()
+        }catch {
+            self.refreshController.endRefreshing()
+            let alert = UIAlertController(title: "No more data available", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
 
@@ -108,7 +120,6 @@ extension DepositListViewController : ScanChequeResponseDelegate {
 //UITableViewDataSource , UITableViewDelegate
 extension DepositListViewController  {
     
-    
     private func configureTableView() {
         depositsTableView.delegate = dataSource
         depositsTableView.dataSource = dataSource
@@ -120,7 +131,4 @@ extension DepositListViewController  {
         depositsTableView.register(totalNib, forCellReuseIdentifier: "DepositsTotalCell")
     }
     
-
 }
-
-

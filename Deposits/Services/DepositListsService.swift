@@ -10,16 +10,20 @@ import Combine
 
 
 protocol DepositsListServiceProtocol : MockNeworkServiceBuildable  {
-    func fetchDeposits(page : String) ->AnyPublisher<[DepositModel],DepositError>
+    func fetchDeposits(pageSize : Int, offset : Int) ->AnyPublisher<[DepositModel],DepositError>
 }
 
 final class DepositListsService : DepositsListServiceProtocol {
     
     var mockType: MockType? = .localJSON("deposits_list")
     
-    func fetchDeposits(page : String = "100") -> AnyPublisher<[DepositModel], DepositError> {
+    func fetchDeposits(pageSize : Int, offset : Int) -> AnyPublisher<[DepositModel], DepositError> {
         
-        let request = DepositListRequest(params: ["pageSize" : page])
+        let request = DepositListRequest(params: [
+            "pageSize" : pageSize.description,
+            "offset" : offset.description
+        ])
+        
         let client = client
         return client
             .request(type: [DepositModel].self, serviceRequest: request)

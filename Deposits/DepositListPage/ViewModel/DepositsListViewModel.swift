@@ -29,8 +29,9 @@ final class DepositsListViewModel  : ObservableObject {
         }
         
     }
-    private var page : Int = 0
-    private var perPage : Int = 100
+    private var offset : Int = 0
+    private var pageSize : Int = 5
+    private var hasMoreData : Bool = true
     private  var bag = Set<AnyCancellable>()
     private var total : Double = 0
     
@@ -51,10 +52,22 @@ final class DepositsListViewModel  : ObservableObject {
         self.depositService = service
     }
     
+    enum PaginationError : Error {
+        case noMoreData
+    }
+    
+    func paginate() throws  {
+        if !hasMoreData {
+            throw PaginationError.noMoreData
+        }
+        fetchDeposits()
+    }
+    
+    
     func fetchDeposits() {
         
         viewState = .loading
-        depositService.fetchDeposits(page: "100")
+        depositService.fetchDeposits(pageSize: pageSize, offset: offset)
             .receive(on: RunLoop.main)
             .sink { [weak self ] response in
                 switch response {
@@ -65,8 +78,16 @@ final class DepositsListViewModel  : ObservableObject {
                 }
                 
             } receiveValue: { [weak self ] deposits in
-                self?.deposits = deposits.sorted(by: {$0.addedDate > $1.addedDate}).map({DepositViewModel(deposit: $0)})
-                self?.total = deposits.reduce(0, { prev, model in return prev + model.amount })
+                print("Deposits count \(deposits.count)")
+                if deposits.count < 1  {
+                    self?.hasMoreData = false
+                }
+                self?.offset+=deposits.count
+                let viewModels = deposits.map({DepositViewModel(deposit: $0)})
+                var unsortedDeposits = self?.deposits ?? []
+                unsortedDeposits.append(contentsOf: viewModels)
+                self?.deposits = unsortedDeposits.sorted(by: {$0.addedDate > $1.addedDate})
+                self?.total += deposits.reduce(0, { prev, model in return prev + model.amount })
             }.store(in: &bag)
         
     }
