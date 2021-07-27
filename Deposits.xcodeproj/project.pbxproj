@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8726628526B0169800D8B2C8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726628426B0169800D8B2C8 /* Helper.swift */; };
 		872B326226A49DD600BD80B8 /* Deposits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872B325826A49DD600BD80B8 /* Deposits.framework */; };
 		872B326726A49DD600BD80B8 /* DepositsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B326626A49DD600BD80B8 /* DepositsTests.swift */; };
 		872B326926A49DD600BD80B8 /* Deposits.h in Headers */ = {isa = PBXBuildFile; fileRef = 872B325B26A49DD600BD80B8 /* Deposits.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8726628426B0169800D8B2C8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		872B325826A49DD600BD80B8 /* Deposits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Deposits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872B325B26A49DD600BD80B8 /* Deposits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Deposits.h; sourceTree = "<group>"; };
 		872B325C26A49DD600BD80B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				872B325B26A49DD600BD80B8 /* Deposits.h */,
 				872B325C26A49DD600BD80B8 /* Info.plist */,
 				872B332F26A4A19000BD80B8 /* DepositModuleBuilder.swift */,
+				8726628426B0169800D8B2C8 /* Helper.swift */,
 				872B336626A546F100BD80B8 /* Environment.swift */,
 			);
 			path = Deposits;
@@ -490,6 +493,7 @@
 				872B333326A4A19000BD80B8 /* DepositModel.swift in Sources */,
 				8762478526A6DCDA004CD6AE /* CameraView.swift in Sources */,
 				872B336726A546F100BD80B8 /* Environment.swift in Sources */,
+				8726628526B0169800D8B2C8 /* Helper.swift in Sources */,
 				872B334926A4A1F200BD80B8 /* DepositsListViewModel.swift in Sources */,
 				872B334826A4A1F200BD80B8 /* ScanChequeViewModel.swift in Sources */,
 				87B6BF6C26A7E7EC00870B5C /* ServiceBuildable.swift in Sources */,

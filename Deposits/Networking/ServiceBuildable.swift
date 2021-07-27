@@ -54,7 +54,9 @@ extension MockNeworkServiceBuildable {
     
     func buildClient(with localJSONFile : String) -> NetworkClient{
         
-        let bundleId = Bundle.main.bundleIdentifier ?? "info.sayoojkrishnan.Deposits"
+        guard let  bundleId = Helper.bundleID else {
+            fatalError("Failed to read bundleId")
+        }
         
         guard let bundle = Bundle(identifier: bundleId) else {
             fatalError("Bundle not found!")
