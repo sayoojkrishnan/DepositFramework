@@ -10,37 +10,12 @@ import Combine
 
 class SearchResultsController: UITableViewController, UISearchResultsUpdating {
     
-    // MARK: - UITableViewDataSource
-    @Published var searchText : String = ""
-    var cancellable : AnyCancellable?
-    
     var deposits : [DepositViewModel]?
     private var searchResult : [DepositViewModel] = []
-//    var searchText : String? {
-//        didSet {
-//            guard let dp = deposits else {
-//                return
-//            }
-//            searchResult = dp.filter({String($0.deposit.chequeAmount ?? 0).range(of: searchText ?? "") != nil})
-//            tableView.isHidden = searchResult.count == 0
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        cancellable =  $searchText.sink { searchResult in
-            print("searchResult - \(searchResult)")
-            print("$searchText - \(self.$searchText)")
-            self.deposits = self.deposits?.filter({String($0.deposit.chequeAmount ?? 0).range(of: self.searchText) != nil})
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        print("cancellable \(String(describing: cancellable))")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +29,11 @@ class SearchResultsController: UITableViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        let keyword = searchController.searchBar.text ?? ""
+        self.searchResult = self.deposits?.filter({$0.search(keyword: keyword)}) ?? []
+        self.tableView.reloadData()
     }
+   
 }
 
 //UITableViewDataSource , UITableViewDelegate

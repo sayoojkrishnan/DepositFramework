@@ -47,4 +47,11 @@ struct DepositViewModel  : Identifiable {
         return deposit.addedDate
     }
     
+    
+    func search(keyword : String) -> Bool {
+        return amount.contains(keyword) ||
+            description.lowercased().contains(keyword.lowercased()) ||
+            date.contains(keyword)
+    }
+    
 }

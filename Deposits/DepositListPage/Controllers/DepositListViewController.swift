@@ -151,10 +151,7 @@ extension DepositListViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let searchText = searchBar.text {
-            resultsTableController.searchText = searchText
-            resultsTableController.deposits = self.viewModel.deposits
-        }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        resultsTableController.deposits = viewModel.deposits
     }
 }

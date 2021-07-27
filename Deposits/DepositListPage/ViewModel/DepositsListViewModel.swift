@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class DepositsListViewModel  : ObservableObject {
+final class DepositsListViewModel  : ObservableObject {
     
     enum DepositViewState {
         case loading
@@ -60,8 +60,7 @@ class DepositsListViewModel  : ObservableObject {
     
     @Published var viewState : DepositViewState?
     @Published var deposits : [DepositViewModel] = []
-    @Published var currentSearchText:String = ""
-    
+
     let depositService : DepositsListServiceProtocol
     init(service : DepositsListServiceProtocol = DepositListsService()) {
         self.depositService = service
