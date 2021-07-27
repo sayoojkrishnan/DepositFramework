@@ -39,7 +39,7 @@ class DepositListViewController: UIViewController {
     private func bind() {
         
         viewModel.$deposits
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] dopsits in
                 let total = self?.viewModel.totalDeposits
                 let transcation = self?.viewModel.numberOfTransaction
@@ -49,7 +49,7 @@ class DepositListViewController: UIViewController {
         
         
         viewModel.$viewState
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 switch state {
                 case .loading :

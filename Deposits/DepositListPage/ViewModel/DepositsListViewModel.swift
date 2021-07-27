@@ -15,25 +15,40 @@ final class DepositsListViewModel  : ObservableObject {
         case loading
         case failed(String)
         case success
-    }
-    
-    enum Sections  : Int{
-        case total = 0
-        case deposits = 1
         
-        static func sectionHeader(for section : Int) ->String {
-            if section == 0 {
-                return "Total"
+        var isLoading : Bool {
+            switch self {
+            case .loading:
+                return true
+            default:
+                return false
             }
-            return "Deposits"
         }
         
+        var isSuccess : Bool {
+            switch self {
+            case .success:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        var error : String? {
+            switch self {
+            case .failed(let err):
+                return err
+            default:
+                return nil
+            }
+        }
     }
-    private var offset : Int = 0
+    
+    private(set) var offset : Int = 0
     private var pageSize : Int = 5
-    private var hasMoreData : Bool = true
-    private  var bag = Set<AnyCancellable>()
-    private var total : Double = 0
+    private(set) var hasMoreData : Bool = true
+    private var bag = Set<AnyCancellable>()
+    private(set) var total : Double = 0
     
     
     var totalDeposits : String {

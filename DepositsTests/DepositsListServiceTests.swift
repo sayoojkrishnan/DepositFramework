@@ -28,7 +28,7 @@ class DepositsListServiceTests : XCTestCase {
         var loadStatus : Bool = false
         var deposits : [DepositModel] = []
         let expectation = expectation(description: "depositlist expectation")
-        depoisitListCancellable = sut.fetchDeposits()
+        depoisitListCancellable = sut.fetchDeposits(pageSize: 1, offset: 5)
             .sink(receiveCompletion: { state in
                 switch state {
                 case .failure(_) :

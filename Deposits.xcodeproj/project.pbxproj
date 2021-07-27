@@ -56,6 +56,8 @@
 		87B6BFC026AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFBF26AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift */; };
 		87B6BFC226AAED0700870B5C /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFC126AAED0700870B5C /* NetworkClientTests.swift */; };
 		87B6BFC426AAEEB400870B5C /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6BFC326AAEEB400870B5C /* MockService.swift */; };
+		87BBD2F326AED219005637E6 /* DepositListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BBD2F226AED219005637E6 /* DepositListViewModelTest.swift */; };
+		87BBD2F726AEE580005637E6 /* MockDepositsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BBD2F626AEE580005637E6 /* MockDepositsListService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		87B6BFBF26AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositListTableViewDataSourceTests.swift; sourceTree = "<group>"; };
 		87B6BFC126AAED0700870B5C /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		87B6BFC326AAEEB400870B5C /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		87BBD2F226AED219005637E6 /* DepositListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositListViewModelTest.swift; sourceTree = "<group>"; };
+		87BBD2F626AEE580005637E6 /* MockDepositsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDepositsListService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 			children = (
 				872B326626A49DD600BD80B8 /* DepositsTests.swift */,
 				87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */,
+				87BBD2F226AED219005637E6 /* DepositListViewModelTest.swift */,
 				87B6BFA126A8453700870B5C /* DepositsListServiceTests.swift */,
 				87B6BFB926AAD56600870B5C /* DepositChequeServiceTests.swift */,
 				87B6BFB126AAB1B400870B5C /* ServiceRequestTests.swift */,
@@ -192,6 +197,7 @@
 				87B6BFC126AAED0700870B5C /* NetworkClientTests.swift */,
 				872B326826A49DD600BD80B8 /* Info.plist */,
 				87B6BFBD26AADBE600870B5C /* MockNeworkService.swift */,
+				87BBD2F626AEE580005637E6 /* MockDepositsListService.swift */,
 				87B6BFC326AAEEB400870B5C /* MockService.swift */,
 				87B6BFB726AAC62200870B5C /* MockEnv.swift */,
 			);
@@ -507,6 +513,8 @@
 				87B6BFC226AAED0700870B5C /* NetworkClientTests.swift in Sources */,
 				87B6BFBA26AAD56600870B5C /* DepositChequeServiceTests.swift in Sources */,
 				87B6BFC426AAEEB400870B5C /* MockService.swift in Sources */,
+				87BBD2F726AEE580005637E6 /* MockDepositsListService.swift in Sources */,
+				87BBD2F326AED219005637E6 /* DepositListViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
