@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class DepositsListViewModel  : ObservableObject {
+class DepositsListViewModel  : ObservableObject {
     
     enum DepositViewState {
         case loading
@@ -35,7 +35,6 @@ final class DepositsListViewModel  : ObservableObject {
     private  var bag = Set<AnyCancellable>()
     private var total : Double = 0
     
-    
     var totalDeposits : String {
         return "$" + String(format: "%.2f", total)
     }
@@ -46,6 +45,7 @@ final class DepositsListViewModel  : ObservableObject {
     
     @Published var viewState : DepositViewState?
     @Published var deposits : [DepositViewModel] = []
+    @Published var currentSearchText:String = ""
     
     let depositService : DepositsListServiceProtocol
     init(service : DepositsListServiceProtocol = DepositListsService()) {
@@ -62,7 +62,6 @@ final class DepositsListViewModel  : ObservableObject {
         }
         fetchDeposits()
     }
-    
     
     func fetchDeposits() {
         
@@ -98,7 +97,5 @@ final class DepositsListViewModel  : ObservableObject {
         deposits.append(DepositViewModel(deposit: deposit))
         deposits = deposits.sorted(by: {$0.addedDate > $1.addedDate})
         total += deposit.amount
-        
     }
-    
 }

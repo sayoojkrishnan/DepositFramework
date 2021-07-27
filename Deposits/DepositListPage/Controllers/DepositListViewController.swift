@@ -21,6 +21,18 @@ class DepositListViewController: UIViewController {
     
     private var bag = Set<AnyCancellable>()
     private var viewModel = DepositsListViewModel()
+    private var resultsTableController: SearchResultsController!
+    
+    private lazy var searchController: UISearchController = {
+        resultsTableController = SearchResultsController()
+        let searchController = UISearchController(searchResultsController: resultsTableController)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Deposit"
+        searchController.searchBar.delegate = self
+        self.definesPresentationContext = true
+        searchController.searchResultsUpdater = resultsTableController
+        return searchController
+    }()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +45,6 @@ class DepositListViewController: UIViewController {
         viewModel.fetchDeposits()
         spinner.startAnimating()
     }
-    
-   
     
     private func bind() {
         
@@ -79,6 +89,7 @@ class DepositListViewController: UIViewController {
     
     
     private func buildNabutton() {
+        self.navigationItem.searchController = searchController
         let barbutton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapDeposit))
         navigationItem.rightBarButtonItem = barbutton
     }
@@ -130,5 +141,20 @@ extension DepositListViewController  {
         let totalNib = UINib(nibName: "DepositsTotalCell", bundle: Bundle(for: DepositsTotalCell.self))
         depositsTableView.register(totalNib, forCellReuseIdentifier: "DepositsTotalCell")
     }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension DepositListViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let searchText = searchBar.text {
+            resultsTableController.searchText = searchText
+            resultsTableController.deposits = self.viewModel.deposits
+        }
+    }
 }
