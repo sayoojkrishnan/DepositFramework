@@ -130,7 +130,6 @@ extension DepositListViewController : ScanChequeResponseDelegate {
 
 //UITableViewDataSource , UITableViewDelegate
 extension DepositListViewController  {
-    
     private func configureTableView() {
         depositsTableView.delegate = dataSource
         depositsTableView.dataSource = dataSource
@@ -144,13 +143,11 @@ extension DepositListViewController  {
 }
 
 // MARK: - UISearchBarDelegate
-
 extension DepositListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         resultsTableController.deposits = viewModel.deposits
     }

@@ -33,7 +33,6 @@ class SearchResultsController: UITableViewController, UISearchResultsUpdating {
         self.searchResult = self.deposits?.filter({$0.search(keyword: keyword)}) ?? []
         self.tableView.reloadData()
     }
-   
 }
 
 //UITableViewDataSource , UITableViewDelegate
