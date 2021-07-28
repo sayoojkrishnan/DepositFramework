@@ -11,7 +11,7 @@ class DepositTableViewCell: UITableViewCell {
 
     var depositViewModel : DepositViewModel? {
         didSet {
-            amountLabel.text = depositViewModel?.amount
+            amountLabel.text = depositViewModel?.amountString
             descriptionLabel.text = depositViewModel?.description
             dateLabel.text = depositViewModel?.date
         }

@@ -14,7 +14,7 @@ class DepositChequeServiceTests: XCTestCase {
     var sut : DepositChequeService!
 
     override func setUpWithError() throws {
-        _ = DepositsEnv.build(withEnv: .mock)
+        _ = DepositsModule.build(withEnv: .mock)
        sut = DepositChequeService()
     }
 

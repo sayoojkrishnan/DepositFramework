@@ -30,7 +30,7 @@ class DepositListViewModelTest: XCTestCase {
         // ViewModel Should call the service class for data
         // Should update total and number of transaction
         mockService.reponse = [DepositModel.dummy,DepositModel.dummy,DepositModel.dummy]
-        sut.fetchDeposits()
+        sut.initialFetch()
         
         let exp = expectation(description: "depositListFetchExpectation")
         let res = XCTWaiter.wait(for: [exp], timeout: 0.4)
@@ -43,7 +43,7 @@ class DepositListViewModelTest: XCTestCase {
         
         XCTAssertTrue(mockService.hasCalledFetchDeposits)
         XCTAssertEqual(sut.deposits.count,3)
-        XCTAssertTrue(sut.viewState!.isSuccess)
+        XCTAssertTrue(sut.viewState! == .success)
         // the dummy object has $100  
         XCTAssertEqual(sut.totalDeposits, "$300.00")
         XCTAssertEqual(sut.numberOfTransaction, "from 3 transactions")
@@ -56,7 +56,7 @@ class DepositListViewModelTest: XCTestCase {
         // should update total and number of transactions
         
         mockService.reponse = [DepositModel.dummy,DepositModel.dummy,DepositModel.dummy]
-        sut.fetchDeposits()
+        sut.initialFetch()
         
         let exp = expectation(description: "depositListFetchExpectation")
         let res = XCTWaiter.wait(for: [exp], timeout: 0.4)

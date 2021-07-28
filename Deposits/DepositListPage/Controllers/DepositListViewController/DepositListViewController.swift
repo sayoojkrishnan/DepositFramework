@@ -25,6 +25,12 @@ class DepositListViewController: BaseViewController {
         return searchController
     }()
     
+    @IBOutlet weak var bottomView: UIView!
+    
+    @IBOutlet weak var totalTransactions: UILabel!
+    
+    @IBOutlet weak var totalDepositAmount: UILabel!
+    
     private(set) var refreshController : UIRefreshControl!
     private(set) var dataSource =  DepositListTableViewDataSource()
     @IBOutlet weak var depositsTableView: UITableView!
@@ -34,8 +40,6 @@ class DepositListViewController: BaseViewController {
     private(set) var viewModel = DepositsListViewModel()
     private(set) var resultsTableController: SearchResultsController!
     
-    
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,20 +48,24 @@ class DepositListViewController: BaseViewController {
         configureTableView()
         buildNabutton()
         bind()
-        viewModel.fetchDeposits()
+        viewModel.initialFetch()
         spinner.startAnimating()
+        
+        bottomView.clipsToBounds = true
+        bottomView.layer.cornerRadius = 8
+        bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        
+        
     }
-    
-    
+
     func showFailureAlert(message :String) {
         showAlert(title: message, actionButtonText: "Retry",alertType: .error ) { [unowned self] in
-            self.viewModel.fetchDeposits()
+            self.viewModel.initialFetch()
         }
     }
     
     
     private func buildNabutton() {
-        
         let barbutton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapDeposit))
         navigationItem.rightBarButtonItem = barbutton
     }
@@ -71,23 +79,9 @@ class DepositListViewController: BaseViewController {
     
     private func configureRefreshControll() {
         refreshController = UIRefreshControl(frame: CGRect.zero, primaryAction: UIAction(handler: { [unowned self ]action in
-            self.paginate()
+            self.viewModel.refresh()
         }))
         depositsTableView.refreshControl = refreshController
     }
-    
-    func paginate() {
-        do {
-            try self.viewModel.paginate()
-        }catch {
-            self.refreshController.endRefreshing()
-            showAlert(title: "No more data available", alertType: .warning)
-        }
-    }
-}
 
-extension DepositListViewController : ScanChequeResponseDelegate {
-    func didDepositCheque(deposit: DepositModel) {
-        viewModel.deposit(deposit: deposit)
-    }
 }

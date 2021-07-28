@@ -19,11 +19,14 @@ struct DepositViewModel  : Identifiable {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd-MM-yyyy"
         return dateFormatterGet.string(from: deposit.addedDate)
-        
     }
     
-    var amount : String {
+    var amountString : String {
         return "$" + String(format: "%.2f", deposit.amount)
+    }
+    
+    var amount : Double {
+        return deposit.amount
     }
     
     var description : String {
@@ -47,11 +50,16 @@ struct DepositViewModel  : Identifiable {
         return deposit.addedDate
     }
     
-    
     func search(keyword : String) -> Bool {
-        return amount.contains(keyword) ||
+        return amountString.contains(keyword) ||
             description.lowercased().contains(keyword.lowercased()) ||
             date.contains(keyword)
     }
     
+}
+
+extension DepositViewModel : Equatable {
+    static func ==(lhs : DepositViewModel, rhs : DepositViewModel) -> Bool {
+        return lhs.deposit == rhs.deposit
+    }
 }
