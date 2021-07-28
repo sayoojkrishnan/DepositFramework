@@ -77,8 +77,9 @@ final class SnackBar  :  NSObject {
   
     
 
-    public init(title : String , duration : Duration ){
+    public init(title : String , duration : Duration ,onView view: UIView? = nil){
         super.init()
+        onWindow = view
         colorScheme = ColorScheme()
         snackTitle = title
         snackDuration = duration
@@ -88,8 +89,9 @@ final class SnackBar  :  NSObject {
         alertView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(onPanGesture(panGesture:))))
     }
     
-    public init(title : String , withActivityIndicator : Bool ){
+    public init(title : String , withActivityIndicator : Bool, onView view: UIView? = nil ){
         super.init()
+        onWindow = view
         snackTitle = title
         snackDuration =  .forEver
         colorScheme = ColorScheme()
@@ -98,8 +100,9 @@ final class SnackBar  :  NSObject {
     }
     
     
-    public init(title : String , actionButtonText : String, callback : @escaping actionButtonCallback ){
+    public init(title : String , actionButtonText : String,onView view: UIView? = nil, callback : @escaping actionButtonCallback ){
         super.init()
+        onWindow = view
         snackTitle = title
         snackDuration = .forEver
         actionBlock = callback
@@ -140,7 +143,6 @@ extension SnackBar  {
     
     private func configure( _ withActivityIndicator : Bool = false){
         if let window = onWindow ??  UIApplication.shared.windows.filter({return $0.isKeyWindow }).first {
-            let topAnchorConst : CGFloat  = onWindow == nil ? 50 : 15
             alertView!.title = snackTitle
             alertView!.colorScheme = colorScheme
             alertView!.showSpinner = withActivityIndicator
@@ -160,7 +162,7 @@ extension SnackBar  {
             NSLayoutConstraint.activate([
                 alertView!.centerXAnchor.constraint(equalTo: window.centerXAnchor),
                 alertView!.heightAnchor.constraint(greaterThanOrEqualToConstant: 45),
-                alertView!.topAnchor.constraint(equalTo: window.layoutMarginsGuide.topAnchor , constant : topAnchorConst),
+                alertView!.topAnchor.constraint(equalTo: window.layoutMarginsGuide.topAnchor , constant : 0),
             ])
         }
     }
@@ -218,8 +220,7 @@ extension SnackBar  {
 
 extension SnackBar {
     
-    public func show(onView view: UIView? = nil){
-        onWindow = view
+    public func show(){
         timer?.invalidate()
         timer = nil
         hapticFeedback()

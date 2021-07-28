@@ -24,7 +24,7 @@ class BaseViewController: UIViewController {
         if let type = alertType {
             snackBar.colorScheme = type.colorScheme
         }
-        snackBar.show(onView: view)
+        snackBar.show()
     }
     
     
@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
         if let type = alertType {
             snackBar.colorScheme = type.colorScheme
         }
-        snackBar.show(onView: view)
+        snackBar.show()
     }
     
     

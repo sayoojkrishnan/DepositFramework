@@ -5,11 +5,11 @@
 //  Created by Sayooj Krishnan  on 28/07/21.
 //
 
-import Foundation
+import UIKit
 
 extension SnackBar {
     
-    static func buildFor(type : SnackBarType , title : String,duration : Duration) -> SnackBar  {
+    static func buildFor(type : SnackBarType , title : String,duration : Duration,onView view: UIView? = nil) -> SnackBar  {
         switch type {
         case .error:
             return Self.buildForErrorAlert(title: title, duration: duration)
@@ -21,20 +21,20 @@ extension SnackBar {
     }
     
     
-    static func buildForErrorAlert(title : String , duration : Duration ) -> SnackBar {
-        let snack =  SnackBar(title: title, duration: duration)
+    static func buildForErrorAlert(title : String , duration : Duration , onView view: UIView? = nil) -> SnackBar {
+        let snack =  SnackBar(title: title, duration: duration,onView: view)
         snack.colorScheme = SnackBarType.error.colorScheme
         return snack
     }
     
-    static func buildForSuccessAlert(title : String , duration : Duration ) -> SnackBar {
-        let snack =  SnackBar(title: title, duration: duration)
+    static func buildForSuccessAlert(title : String , duration : Duration ,onView view: UIView? = nil) -> SnackBar {
+        let snack =  SnackBar(title: title, duration: duration,onView: view)
         snack.colorScheme = SnackBarType.success.colorScheme
         return snack
     }
     
-    static func buildForWarningAlert(title : String , duration : Duration ) -> SnackBar {
-        let snack =  SnackBar(title: title, duration: duration)
+    static func buildForWarningAlert(title : String , duration : Duration, onView view: UIView? = nil ) -> SnackBar {
+        let snack =  SnackBar(title: title, duration: duration,onView: view)
         snack.colorScheme = SnackBarType.warning.colorScheme
         return snack
     }
