@@ -19,7 +19,7 @@ protocol ServiceRequest  {
 extension ServiceRequest {
     
     var host : String {
-        return DepositsEnv.instance.env.url
+        return DepositsModule.instance.env.url
     }
     
     var endPoint : URL {

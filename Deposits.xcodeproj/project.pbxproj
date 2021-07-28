@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		6A35D58926AFEFC50042BD85 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A35D58826AFEFC50042BD85 /* SearchResultsController.swift */; };
 		8726628526B0169800D8B2C8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726628426B0169800D8B2C8 /* Helper.swift */; };
+		8726630D26B1621F00D8B2C8 /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726630C26B1621F00D8B2C8 /* SnackBar.swift */; };
+		8726630F26B1635800D8B2C8 /* SnackBar+AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726630E26B1635800D8B2C8 /* SnackBar+AlertView.swift */; };
+		8726631426B165B600D8B2C8 /* SnackBar+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726631326B165B600D8B2C8 /* SnackBar+Builder.swift */; };
+		8726631626B1660700D8B2C8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726631526B1660700D8B2C8 /* BaseViewController.swift */; };
+		8726631B26B1678400D8B2C8 /* DepositListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726631A26B1678400D8B2C8 /* DepositListViewController+TableView.swift */; };
+		8726631D26B167E400D8B2C8 /* DepositListViewController+UIBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726631C26B167E400D8B2C8 /* DepositListViewController+UIBindings.swift */; };
+		8726631F26B1682C00D8B2C8 /* DepositListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726631E26B1682C00D8B2C8 /* DepositListViewController+SearchBar.swift */; };
+		8726632126B16CFB00D8B2C8 /* ScanChequeViewController+States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726632026B16CFB00D8B2C8 /* ScanChequeViewController+States.swift */; };
+		8726632326B16D2D00D8B2C8 /* ScanChequeViewController+Delgates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726632226B16D2D00D8B2C8 /* ScanChequeViewController+Delgates.swift */; };
 		872B326226A49DD600BD80B8 /* Deposits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872B325826A49DD600BD80B8 /* Deposits.framework */; };
 		872B326726A49DD600BD80B8 /* DepositsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B326626A49DD600BD80B8 /* DepositsTests.swift */; };
 		872B326926A49DD600BD80B8 /* Deposits.h in Headers */ = {isa = PBXBuildFile; fileRef = 872B325B26A49DD600BD80B8 /* Deposits.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,6 +84,15 @@
 /* Begin PBXFileReference section */
 		6A35D58826AFEFC50042BD85 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		8726628426B0169800D8B2C8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		8726630C26B1621F00D8B2C8 /* SnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
+		8726630E26B1635800D8B2C8 /* SnackBar+AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnackBar+AlertView.swift"; sourceTree = "<group>"; };
+		8726631326B165B600D8B2C8 /* SnackBar+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnackBar+Builder.swift"; sourceTree = "<group>"; };
+		8726631526B1660700D8B2C8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8726631A26B1678400D8B2C8 /* DepositListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepositListViewController+TableView.swift"; sourceTree = "<group>"; };
+		8726631C26B167E400D8B2C8 /* DepositListViewController+UIBindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepositListViewController+UIBindings.swift"; sourceTree = "<group>"; };
+		8726631E26B1682C00D8B2C8 /* DepositListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepositListViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		8726632026B16CFB00D8B2C8 /* ScanChequeViewController+States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScanChequeViewController+States.swift"; sourceTree = "<group>"; };
+		8726632226B16D2D00D8B2C8 /* ScanChequeViewController+Delgates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScanChequeViewController+Delgates.swift"; sourceTree = "<group>"; };
 		872B325826A49DD600BD80B8 /* Deposits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Deposits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872B325B26A49DD600BD80B8 /* Deposits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Deposits.h; sourceTree = "<group>"; };
 		872B325C26A49DD600BD80B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +168,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8726631226B1640400D8B2C8 /* SnackBar */ = {
+			isa = PBXGroup;
+			children = (
+				8726630C26B1621F00D8B2C8 /* SnackBar.swift */,
+				8726631326B165B600D8B2C8 /* SnackBar+Builder.swift */,
+				8726630E26B1635800D8B2C8 /* SnackBar+AlertView.swift */,
+			);
+			path = SnackBar;
+			sourceTree = "<group>";
+		};
+		8726631726B1668900D8B2C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8726631826B166E600D8B2C8 /* ViewHelper */,
+				872B332F26A4A19000BD80B8 /* DepositModuleBuilder.swift */,
+				8726628426B0169800D8B2C8 /* Helper.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8726631826B166E600D8B2C8 /* ViewHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8726631526B1660700D8B2C8 /* BaseViewController.swift */,
+				8726631226B1640400D8B2C8 /* SnackBar */,
+				872B33B926A5984100BD80B8 /* SBChequeScan */,
+			);
+			path = ViewHelper;
+			sourceTree = "<group>";
+		};
+		8726631926B1672C00D8B2C8 /* DepositListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				872B333A26A4A1CA00BD80B8 /* DepositListViewController.swift */,
+				8726631E26B1682C00D8B2C8 /* DepositListViewController+SearchBar.swift */,
+				8726631C26B167E400D8B2C8 /* DepositListViewController+UIBindings.swift */,
+				8726631A26B1678400D8B2C8 /* DepositListViewController+TableView.swift */,
+				872B333B26A4A1CA00BD80B8 /* DepositListViewController.xib */,
+			);
+			path = DepositListViewController;
+			sourceTree = "<group>";
+		};
 		872B324E26A49DD600BD80B8 = {
 			isa = PBXGroup;
 			children = (
@@ -177,11 +237,9 @@
 				872B333E26A4A1D000BD80B8 /* DepositListPage */,
 				872B333926A4A1B400BD80B8 /* ScanChequePage */,
 				872B333426A4A19600BD80B8 /* Model */,
-				872B33B926A5984100BD80B8 /* SBChequeScan */,
-				872B325B26A49DD600BD80B8 /* Deposits.h */,
+				8726631726B1668900D8B2C8 /* Supporting Files */,
 				872B325C26A49DD600BD80B8 /* Info.plist */,
-				872B332F26A4A19000BD80B8 /* DepositModuleBuilder.swift */,
-				8726628426B0169800D8B2C8 /* Helper.swift */,
+				872B325B26A49DD600BD80B8 /* Deposits.h */,
 				872B336626A546F100BD80B8 /* Environment.swift */,
 			);
 			path = Deposits;
@@ -273,9 +331,8 @@
 		872B334B26A4A21200BD80B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				872B333A26A4A1CA00BD80B8 /* DepositListViewController.swift */,
+				8726631926B1672C00D8B2C8 /* DepositListViewController */,
 				6A35D58826AFEFC50042BD85 /* SearchResultsController.swift */,
-				872B333B26A4A1CA00BD80B8 /* DepositListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -293,6 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				872B333526A4A1AD00BD80B8 /* ScanChequeViewController.swift */,
+				8726632226B16D2D00D8B2C8 /* ScanChequeViewController+Delgates.swift */,
+				8726632026B16CFB00D8B2C8 /* ScanChequeViewController+States.swift */,
 				872B333626A4A1AD00BD80B8 /* ScanChequeViewController.xib */,
 			);
 			path = Controller;
@@ -475,26 +534,35 @@
 				872B336126A5468600BD80B8 /* ServiceRequestMethod.swift in Sources */,
 				872B333126A4A19000BD80B8 /* DepositError.swift in Sources */,
 				872B336526A546DB00BD80B8 /* NetworkClientError.swift in Sources */,
+				8726631626B1660700D8B2C8 /* BaseViewController.swift in Sources */,
 				8762478926A6DD1F004CD6AE /* ChequeSide.swift in Sources */,
 				8762478726A6DCE6004CD6AE /* ImageRatio.swift in Sources */,
 				872B332C26A4A17900BD80B8 /* DepositTableViewCell.swift in Sources */,
 				872B335F26A53B1500BD80B8 /* NetworkClient.swift in Sources */,
+				8726631426B165B600D8B2C8 /* SnackBar+Builder.swift in Sources */,
 				872B335A26A4A4A600BD80B8 /* ChequImageView.swift in Sources */,
 				872B334226A4A1E200BD80B8 /* DepositListsService.swift in Sources */,
 				872B337926A558F900BD80B8 /* DepositCheuqueService.swift in Sources */,
 				872B333726A4A1AD00BD80B8 /* ScanChequeViewController.swift in Sources */,
 				87B6BF7426A7FDB900870B5C /* DepositListRequest.swift in Sources */,
+				8726631F26B1682C00D8B2C8 /* DepositListViewController+SearchBar.swift in Sources */,
 				872B333226A4A19000BD80B8 /* DepositModuleBuilder.swift in Sources */,
 				872B332726A4A15100BD80B8 /* DepositsTotalCell.swift in Sources */,
 				87B6BF6E26A7E8CA00870B5C /* MockURLSession.swift in Sources */,
 				872B336926A5471C00BD80B8 /* URLRequest.swift in Sources */,
 				87B6BF7226A7FDA200870B5C /* DepositChequeRequest.swift in Sources */,
+				8726632326B16D2D00D8B2C8 /* ScanChequeViewController+Delgates.swift in Sources */,
+				8726632126B16CFB00D8B2C8 /* ScanChequeViewController+States.swift in Sources */,
 				872B33C126A5A0D000BD80B8 /* ChequeScannerVC.swift in Sources */,
+				8726631B26B1678400D8B2C8 /* DepositListViewController+TableView.swift in Sources */,
 				872B333C26A4A1CA00BD80B8 /* DepositListViewController.swift in Sources */,
 				87B6BFAC26A9846D00870B5C /* DepositListTableViewDataSource.swift in Sources */,
+				8726631D26B167E400D8B2C8 /* DepositListViewController+UIBindings.swift in Sources */,
 				872B334126A4A1E200BD80B8 /* MockDepositList.swift in Sources */,
 				872B333326A4A19000BD80B8 /* DepositModel.swift in Sources */,
 				8762478526A6DCDA004CD6AE /* CameraView.swift in Sources */,
+				8726630D26B1621F00D8B2C8 /* SnackBar.swift in Sources */,
+				8726630F26B1635800D8B2C8 /* SnackBar+AlertView.swift in Sources */,
 				872B336726A546F100BD80B8 /* Environment.swift in Sources */,
 				8726628526B0169800D8B2C8 /* Helper.swift in Sources */,
 				6A35D58926AFEFC50042BD85 /* SearchResultsController.swift in Sources */,
