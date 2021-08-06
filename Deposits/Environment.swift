@@ -36,21 +36,21 @@ protocol EnvBuildable  {
     var env : Env {get}
 }
 
-class DepositsEnv : EnvBuildable {
+class DepositsModule : EnvBuildable {
     
 
-    private static var _instance : DepositsEnv?
+    private static var _instance : DepositsModule?
     
-    static var instance : DepositsEnv {
+    static var instance : DepositsModule {
         guard let ins = _instance else {
             fatalError("Call the build method on DepositsEnv with proper env to initialize")
         }
         return ins
     }
     
-    static func build(withEnv env : Env) -> DepositsEnv {
+    static func build(withEnv env : Env) -> DepositsModule {
         if _instance == nil {
-            _instance = DepositsEnv(env: env)
+            _instance = DepositsModule(env: env)
         }
         return _instance!
     }

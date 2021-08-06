@@ -11,7 +11,7 @@ import Combine
 protocol NetworkLayerProtocol  {
     func request<T>(type : T.Type,serviceRequest : ServiceRequest) -> AnyPublisher<T,NetworkClientError> where T: Decodable
 }
-
+let cache = ResponseCache()
 final class NetworkClient : NetworkLayerProtocol {
     
     private let bgQueue = DispatchQueue(label: "NetworkLayerBackgroundQueue")
@@ -21,8 +21,18 @@ final class NetworkClient : NetworkLayerProtocol {
     }
     
     func request<T>(type: T.Type, serviceRequest: ServiceRequest) -> AnyPublisher<T, NetworkClientError> where T : Decodable {
+       
         let request = URLRequest(serviceRequest: serviceRequest)
-        print(request.url?.absoluteString ?? "")
+        let cacheKey = request.url?.absoluteString ?? ""
+        
+        if let cached = cache.get(forKey: cacheKey) {
+            if let decoded = try? JSONDecoder().decode(T.self, from: cached) {
+                return Future<T, NetworkClientError>{promise in
+                    promise(.success(decoded))
+                }.eraseToAnyPublisher()
+            }
+        }
+        
         return session.dataTask(for: request)
             .tryMap { (data: Data, response: URLResponse) in
                 guard let httpResponse = response as? HTTPURLResponse else {
@@ -30,6 +40,7 @@ final class NetworkClient : NetworkLayerProtocol {
                 }
                 switch httpResponse.statusCode {
                 case 200...300 :
+                    self.saveInCache(data: data, key: cacheKey)
                     return data
                 case 404 :
                     throw NetworkClientError.notFound
@@ -45,7 +56,7 @@ final class NetworkClient : NetworkLayerProtocol {
                         return NetworkClientError.failedToParse
                 }
             }
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
@@ -66,6 +77,12 @@ final class NetworkClient : NetworkLayerProtocol {
                 return NetworkClientError.serverError
             }
         }
+    }
+    
+    
+    private func saveInCache(data : Data , key : String) {
+        let entry = ResponseCacheEntry(value: data)
+        cache.set(item: entry, forKey: key)
     }
 }
 

@@ -26,7 +26,7 @@ class DepositViewModelTests: XCTestCase {
 
     func testDespositViewModel_whenInitWithDepositModel_ShouldProvideValidDateAndAmount() {
         XCTAssertEqual(sut.date, "21-07-2021", "Added date formatting is incorrect")
-        XCTAssertEqual(sut.amount, "$100.00", "Cheque amount formatting is incorrect ")
+        XCTAssertEqual(sut.amountString, "$100.00", "Cheque amount formatting is incorrect ")
         XCTAssertEqual(sut.description, dummyModel.description)
         XCTAssertEqual(sut.id, dummyModel.id)
         XCTAssertEqual(sut.addedDate, dummyModel.addedDate)

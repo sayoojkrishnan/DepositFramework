@@ -47,7 +47,10 @@ class ScanChequeViewModel  {
     var depositCancellable : AnyCancellable?
     
     func deposit(){
-        guard let amount = Double(amount),!chequeDescription.isEmpty  else {return}
+        guard let amount = Double(amount),!chequeDescription.isEmpty  else {
+            state.value = .failed("Fill in all required fields")
+            return
+        }
         
         let depositDate = date.timeIntervalSince1970
         

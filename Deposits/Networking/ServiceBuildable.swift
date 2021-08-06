@@ -21,7 +21,7 @@ protocol MockNeworkServiceBuildable {
 extension MockNeworkServiceBuildable {
     
     var env : EnvBuildable {
-        DepositsEnv.instance
+        DepositsModule.instance
     }
     
     

@@ -12,7 +12,7 @@ protocol ScanChequeResponseDelegate : AnyObject {
     func didDepositCheque(deposit : DepositModel)
 }
 
-class ScanChequeViewController: UIViewController {
+class ScanChequeViewController: BaseViewController {
     
     @IBOutlet weak var loadingBar: UIStackView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -48,28 +48,7 @@ class ScanChequeViewController: UIViewController {
         chequeFrontImage.delegate = self
     }
     
-    private func bind() {
-        stateCancellable = viewModel.state
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] state in
-                switch state {
-                case .depositing :
-                    self?.loadingBar.isHidden = false
-                    self?.spinner.startAnimating()
-                case .deposited(let model) :
-                    self?.spinner.stopAnimating()
-                    self?.loadingBar.isHidden = true
-                    self?.delegate?.didDepositCheque(deposit: model)
-                    self?.showAlert(title: "Deposited")
-                case .failed(let error ):
-                    self?.loadingBar.isHidden = true
-                    self?.spinner.stopAnimating()
-                    self?.showAlert(title: error,hasFailedToDeposit: true)
-                default :
-                    break
-                }
-            })
-    }
+   
     
     private func buildNabutton() {
         let barbutton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
@@ -89,43 +68,6 @@ class ScanChequeViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func showAlert(title : String , hasFailedToDeposit : Bool = false ) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { clicked in
-            if !hasFailedToDeposit {
-                self.navigationController?.popViewController(animated: true)
-            }
-        }))
-        present(alert, animated: true, completion: nil)
-    }
     
 }
 
-
-extension ScanChequeViewController : ChequImageViewDelegate {
-    
-    func didRequestToOpenCamera(for chequeSide: ChequeSide) {
-        let scanner = SBChequeScannerVC()
-        scanner.side = chequeSide
-        scanner.delegate = self
-        scanner.modalPresentationStyle = .fullScreen
-        self.present(scanner, animated: true, completion: nil)
-    }
-    
-}
-
-extension ScanChequeViewController : ChequeScannerDelegate {
-    
-    func didFinishScanning(withCheque image: UIImage, side: ChequeSide) {
-
-        if side == .back {
-            self.viewModel.chequeBackImage  = image
-        }else {
-            self.viewModel.chequeFrontImage = image
-        }
-        
-        self.chequeFrontImage.chequeImage = self.viewModel.chequeFrontImage
-        self.chequeBackImage.chequeImage =  self.viewModel.chequeBackImage
-    }
-    
-}

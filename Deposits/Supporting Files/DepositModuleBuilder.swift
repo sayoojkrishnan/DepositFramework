@@ -12,7 +12,7 @@ public struct DepositModuleBuilder  {
     
     public static func build(withEnv env : Env) -> UINavigationController {
         
-        let _ = DepositsEnv.build(withEnv: env)
+        let _ = DepositsModule.build(withEnv: env)
         let deposits = DepositListViewController.build()
         let nav =  UINavigationController(rootViewController: deposits)
         nav.navigationBar.prefersLargeTitles = true

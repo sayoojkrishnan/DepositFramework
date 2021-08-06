@@ -13,7 +13,7 @@ class DepositsListServiceTests : XCTestCase {
     var sut : DepositListsService!
     override func setUpWithError() throws {
         // Forcing to switch to mock env
-        _ = DepositsEnv.build(withEnv: .mock)
+        _ = DepositsModule.build(withEnv: .mock)
         sut = DepositListsService()
     }
 
