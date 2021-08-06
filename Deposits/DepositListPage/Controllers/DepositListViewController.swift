@@ -23,7 +23,7 @@ class DepositListViewController: UIViewController {
     private var viewModel = DepositsListViewModel()
     private var resultsTableController: SearchResultsController!
     
-    private lazy var searchController: UISearchController = {
+    lazy var searchController: UISearchController = {
         resultsTableController = SearchResultsController()
         let searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.obscuresBackgroundDuringPresentation = false

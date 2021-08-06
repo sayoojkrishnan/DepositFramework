@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A05B10A26B179F100BF8DDA /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05B10926B179F100BF8DDA /* LoginService.swift */; };
+		6A05B10C26B1832300BF8DDA /* LoginModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05B10B26B1832300BF8DDA /* LoginModelTests.swift */; };
+		6A05B10F26B185C900BF8DDA /* SearchDepositViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05B10E26B185C900BF8DDA /* SearchDepositViewControllerTests.swift */; };
+		6A2B89FD26B33A290070D80C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A2B89FC26B33A290070D80C /* LoginViewController.xib */; };
 		6A35D58926AFEFC50042BD85 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A35D58826AFEFC50042BD85 /* SearchResultsController.swift */; };
+		6AD0977326B29F9100A46973 /* LoginWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0977226B29F9100A46973 /* LoginWebServiceTests.swift */; };
+		6AD0977526B2A38D00A46973 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0977426B2A38D00A46973 /* LoginResponseModel.swift */; };
+		6AD0977726B2A3EF00A46973 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0977626B2A3EF00A46973 /* LoginError.swift */; };
+		6ADC106526B16B9700A1D8E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADC106426B16B9700A1D8E6 /* LoginViewController.swift */; };
+		6ADC106726B16C3C00A1D8E6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADC106626B16C3C00A1D8E6 /* LoginViewModel.swift */; };
 		8726628526B0169800D8B2C8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726628426B0169800D8B2C8 /* Helper.swift */; };
 		872B326226A49DD600BD80B8 /* Deposits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872B325826A49DD600BD80B8 /* Deposits.framework */; };
 		872B326726A49DD600BD80B8 /* DepositsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B326626A49DD600BD80B8 /* DepositsTests.swift */; };
@@ -73,7 +82,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A05B10926B179F100BF8DDA /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		6A05B10B26B1832300BF8DDA /* LoginModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelTests.swift; sourceTree = "<group>"; };
+		6A05B10E26B185C900BF8DDA /* SearchDepositViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDepositViewControllerTests.swift; sourceTree = "<group>"; };
+		6A2B89FC26B33A290070D80C /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		6A35D58826AFEFC50042BD85 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		6AD0977226B29F9100A46973 /* LoginWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebServiceTests.swift; sourceTree = "<group>"; };
+		6AD0977426B2A38D00A46973 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		6AD0977626B2A3EF00A46973 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		6ADC106426B16B9700A1D8E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6ADC106626B16C3C00A1D8E6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8726628426B0169800D8B2C8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		872B325826A49DD600BD80B8 /* Deposits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Deposits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872B325B26A49DD600BD80B8 /* Deposits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Deposits.h; sourceTree = "<group>"; };
@@ -150,11 +168,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A05B10D26B1834200BF8DDA /* LoginTests */ = {
+			isa = PBXGroup;
+			children = (
+				6A05B10B26B1832300BF8DDA /* LoginModelTests.swift */,
+				6AD0977226B29F9100A46973 /* LoginWebServiceTests.swift */,
+			);
+			name = LoginTests;
+			sourceTree = "<group>";
+		};
+		6ADC106226B16B4E00A1D8E6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6ADC106326B16B7A00A1D8E6 /* Controllers */,
+				6ADC106826B16C4400A1D8E6 /* ViewModel */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6ADC106326B16B7A00A1D8E6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6ADC106426B16B9700A1D8E6 /* LoginViewController.swift */,
+				6A2B89FC26B33A290070D80C /* LoginViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6ADC106826B16C4400A1D8E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6ADC106626B16C3C00A1D8E6 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		872B324E26A49DD600BD80B8 = {
 			isa = PBXGroup;
 			children = (
 				872B325A26A49DD600BD80B8 /* Deposits */,
 				872B326526A49DD600BD80B8 /* DepositsTests */,
+				6A05B10D26B1834200BF8DDA /* LoginTests */,
 				872B325926A49DD600BD80B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,6 +228,7 @@
 				87B6BF6826A7E6D400870B5C /* Mocks */,
 				872B335D26A53AFC00BD80B8 /* Networking */,
 				872B334326A4A1E600BD80B8 /* Services */,
+				6ADC106226B16B4E00A1D8E6 /* Login */,
 				872B333E26A4A1D000BD80B8 /* DepositListPage */,
 				872B333926A4A1B400BD80B8 /* ScanChequePage */,
 				872B333426A4A19600BD80B8 /* Model */,
@@ -190,6 +245,7 @@
 		872B326526A49DD600BD80B8 /* DepositsTests */ = {
 			isa = PBXGroup;
 			children = (
+				6A05B10E26B185C900BF8DDA /* SearchDepositViewControllerTests.swift */,
 				872B326626A49DD600BD80B8 /* DepositsTests.swift */,
 				87B6BF9F26A83C2E00870B5C /* DepositViewModelTests.swift */,
 				87BBD2F226AED219005637E6 /* DepositListViewModelTest.swift */,
@@ -232,6 +288,8 @@
 			children = (
 				872B332E26A4A19000BD80B8 /* DepositError.swift */,
 				872B333026A4A19000BD80B8 /* DepositModel.swift */,
+				6AD0977426B2A38D00A46973 /* LoginResponseModel.swift */,
+				6AD0977626B2A3EF00A46973 /* LoginError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +324,7 @@
 				872B334026A4A1E200BD80B8 /* DepositListsService.swift */,
 				872B337826A558F900BD80B8 /* DepositCheuqueService.swift */,
 				872B333F26A4A1E200BD80B8 /* MockDepositList.swift */,
+				6A05B10926B179F100BF8DDA /* LoginService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -450,6 +509,7 @@
 			files = (
 				872B332B26A4A17900BD80B8 /* DepositTableViewCell.xib in Resources */,
 				872B333D26A4A1CA00BD80B8 /* DepositListViewController.xib in Resources */,
+				6A2B89FD26B33A290070D80C /* LoginViewController.xib in Resources */,
 				872B332626A4A15100BD80B8 /* DepositsTotalCell.xib in Resources */,
 				87B6BF6A26A7E77500870B5C /* deposits_list.json in Resources */,
 				872B333826A4A1AD00BD80B8 /* ScanChequeViewController.xib in Resources */,
@@ -475,11 +535,13 @@
 				872B336126A5468600BD80B8 /* ServiceRequestMethod.swift in Sources */,
 				872B333126A4A19000BD80B8 /* DepositError.swift in Sources */,
 				872B336526A546DB00BD80B8 /* NetworkClientError.swift in Sources */,
+				6AD0977726B2A3EF00A46973 /* LoginError.swift in Sources */,
 				8762478926A6DD1F004CD6AE /* ChequeSide.swift in Sources */,
 				8762478726A6DCE6004CD6AE /* ImageRatio.swift in Sources */,
 				872B332C26A4A17900BD80B8 /* DepositTableViewCell.swift in Sources */,
 				872B335F26A53B1500BD80B8 /* NetworkClient.swift in Sources */,
 				872B335A26A4A4A600BD80B8 /* ChequImageView.swift in Sources */,
+				6ADC106726B16C3C00A1D8E6 /* LoginViewModel.swift in Sources */,
 				872B334226A4A1E200BD80B8 /* DepositListsService.swift in Sources */,
 				872B337926A558F900BD80B8 /* DepositCheuqueService.swift in Sources */,
 				872B333726A4A1AD00BD80B8 /* ScanChequeViewController.swift in Sources */,
@@ -491,10 +553,13 @@
 				87B6BF7226A7FDA200870B5C /* DepositChequeRequest.swift in Sources */,
 				872B33C126A5A0D000BD80B8 /* ChequeScannerVC.swift in Sources */,
 				872B333C26A4A1CA00BD80B8 /* DepositListViewController.swift in Sources */,
+				6ADC106526B16B9700A1D8E6 /* LoginViewController.swift in Sources */,
 				87B6BFAC26A9846D00870B5C /* DepositListTableViewDataSource.swift in Sources */,
+				6AD0977526B2A38D00A46973 /* LoginResponseModel.swift in Sources */,
 				872B334126A4A1E200BD80B8 /* MockDepositList.swift in Sources */,
 				872B333326A4A19000BD80B8 /* DepositModel.swift in Sources */,
 				8762478526A6DCDA004CD6AE /* CameraView.swift in Sources */,
+				6A05B10A26B179F100BF8DDA /* LoginService.swift in Sources */,
 				872B336726A546F100BD80B8 /* Environment.swift in Sources */,
 				8726628526B0169800D8B2C8 /* Helper.swift in Sources */,
 				6A35D58926AFEFC50042BD85 /* SearchResultsController.swift in Sources */,
@@ -510,16 +575,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B6BFB426AABD7200870B5C /* MockNeworkServiceBuildableTest.swift in Sources */,
+				6A05B10F26B185C900BF8DDA /* SearchDepositViewControllerTests.swift in Sources */,
 				87B6BFC026AAE8A200870B5C /* DepositListTableViewDataSourceTests.swift in Sources */,
 				872B326726A49DD600BD80B8 /* DepositsTests.swift in Sources */,
 				87B6BFB226AAB1B400870B5C /* ServiceRequestTests.swift in Sources */,
 				87B6BFA226A8453700870B5C /* DepositsListServiceTests.swift in Sources */,
+				6AD0977326B29F9100A46973 /* LoginWebServiceTests.swift in Sources */,
 				87B6BFBC26AADBC400870B5C /* ScanChequeViewModelTest.swift in Sources */,
 				87B6BFA026A83C2E00870B5C /* DepositViewModelTests.swift in Sources */,
 				87B6BFB826AAC62200870B5C /* MockEnv.swift in Sources */,
 				87B6BFBE26AADBE600870B5C /* MockNeworkService.swift in Sources */,
 				87B6BFC226AAED0700870B5C /* NetworkClientTests.swift in Sources */,
 				87B6BFBA26AAD56600870B5C /* DepositChequeServiceTests.swift in Sources */,
+				6A05B10C26B1832300BF8DDA /* LoginModelTests.swift in Sources */,
 				87B6BFC426AAEEB400870B5C /* MockService.swift in Sources */,
 				87BBD2F726AEE580005637E6 /* MockDepositsListService.swift in Sources */,
 				87BBD2F326AED219005637E6 /* DepositListViewModelTest.swift in Sources */,

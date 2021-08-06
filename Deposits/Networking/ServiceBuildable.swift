@@ -75,7 +75,5 @@ extension MockNeworkServiceBuildable {
         let session = MockURLSession()
         session.nextData = jsonData
         return NetworkClient(session: session)
-        
     }
-    
 }
